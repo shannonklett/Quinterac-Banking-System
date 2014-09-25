@@ -1,0 +1,14 @@
+Purpose of Document:
+1) Outline how tests are organized (directories?)
+2) How they will be run (shell scripts?)
+3) How output will be stored/organized for reporting/comparison
+
+Ideas:
+1)
+
+2)
+
+3) 
+-Stored in folder 327repo/TestOutputs/DATETIME_OF_TEST. 
+-Internal structure should be similar to how tests are organized
+
