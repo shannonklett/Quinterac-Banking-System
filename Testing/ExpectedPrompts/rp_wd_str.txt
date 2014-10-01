@@ -1,0 +1,7 @@
+Enter ‘login’ to begin:
+Are you ‘retail’ or ‘agent’:
+Enter a valid command:
+Enter a valid account number:
+Enter an amount to be withdrawn:
+Error: Amount must not contain non-numerical character.
+Enter a valid command:
