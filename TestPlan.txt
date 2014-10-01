@@ -39,7 +39,7 @@ Our test names are separated into 3-4 sections depending on the type of command.
     o/p - output or prompt
 
     Type of command:
-    cr/dl/dp/wd/tf/li/lo  - create, delete, deposit, withdrawal, transfer, login, logout
+    cr/dl/dp/wd/tr/li/lo  - create, delete, deposit, withdrawal, transfer, login, logout
 
     Input being tested:
     num/nam/amt - account number, account name, amount of transaction
@@ -55,7 +55,7 @@ Our test names are separated into 3-4 sections depending on the type of command.
     int - number used (when string expected)
     dne - account does not exist
     cor - correct input
-    
+    out - logout while in an operation    
     
 Test Run Plan:
 Our masterScript.sh is responsible for running all test cases. It will call the individual scripts from Scripts/ folder in the correct order.
