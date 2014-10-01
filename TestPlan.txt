@@ -1,0 +1,65 @@
+Purpose of Document:
+1) Outline how tests are organized (directories)
+2) How they will be run (shell scripts)
+3) How output will be stored/organized for reporting/comparison
+
+Test Input and Output Organization (Folder Structure):
+Testing/
+    ExpectedOutputs/
+        All expected output files (ao_*.txt, empty.txt)
+    ExpectedPrompts/
+        All expected prompt files (ap_*.txt)
+    FailedOutputs/
+        DateTime1/
+            sdiff of output files for all failed tests of test run at DateTime1
+        DateTime2/
+            sdiff of output files for all failed tests of test run at DateTime2
+        etc.    
+    FailedPrompts/
+        DateTime1/
+            sdiff of prompt files for all failed tests of test run at DateTime1
+        DateTime2/
+            sdiff of prompt files for all failed tests of test run at DateTime2
+        etc.
+    Inputs/
+        All input files (accountList_1.txt, accountList_1_2.txt, etc)
+    Scripts/
+        All test scripts (one for each test: a_*.sh)
+    Temp/
+        output.txt
+        prompt.txt
+    masterScript.sh    
+    
+Test Run Plan:
+Our masterScript.sh is responsible for running all test cases. It will call the individual scripts from Scripts/ folder in the correct order.
+
+See pseudo-code below for test run. Basically, each run of the masterScript will create a new folder in FailedOutputs and FailedPrompts named with the current date and time. For each test, it will save temp output and prompt files, then compare them to the expected ones (using diff). If different, it saves the sdiff of the files to the appropriate folders for later review and adds the test name to the FailedTests.txt file.
+
+Pseudo-code for running test_a:
+    run test_a.sh
+    save file output to Temp/output.txt
+    save prompts to Temp/prompt.txt
+    diff Temp/output.txt ExpectedOutputs/ao_test_a.txt
+    diff Temp/prompt.txt ExpectedPrompts/ap_test_a.txt 
+    if either is different
+        then
+        save sdiff output.txt ao_test_a.txt to FailedOutputs/DateTime/ao_test_a.txt
+        save sdiff output.txt ao_test_a.txt to FailedPrompts/DateTime/ap_test_a.txt
+        append "test_a" to FailedTests.txt
+    fi
+    
+Order of Test Cases:
+login
+logout
+create
+delete
+deposit
+withdrawal
+transfer
+
+Within each command, the order will be:
+command
+first input
+second input
+(third input)
+logout
