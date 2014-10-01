@@ -1,5 +1,5 @@
 Enter 'login' to begin:
 Are you 'retail' or 'agent'?
 Enter a valid command:
-Enter a new account number:
-Enter a new account name:
+Enter a valid account number:
+Enter deposit amount:
