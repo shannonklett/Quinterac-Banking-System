@@ -9,7 +9,7 @@ done
 #Command, valid num, error 1-6 digits, command
 NUM_ERROR=ap_dl_num_neg.txt
 
-for LABEL in ap_dp_num_dec.txt
+for LABEL in ap_dp_num_dec.txt ap_dp_num_big.txt ap_dp_num_str.txt ap_dp_num_neg.txt
 do
 	cp "$NUM_ERROR" "$LABEL"
 done
