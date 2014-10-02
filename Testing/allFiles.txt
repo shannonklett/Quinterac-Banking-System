@@ -1,87 +1,51 @@
-<<<<<<< Updated upstream
-=======
-/ExpectedOutputs/*
-/ExpectedPrompts/*
-Expected Outputs:
->>>>>>> Stashed changes
-ExpectedOutputs/ao_cr_nam_int.txt
+Inputs/accountList_1_123456.txt
 
-04 000001 000000 00000000 1              
-00 000000 000000 00000000                
+000001
+123456
+000000
 
 
-ExpectedOutputs/ao_cr_nam_sml.txt
+Inputs/accountList_123456_223456.txt
 
-04 000001 000000 00000000 abc            
-00 000000 000000 00000000                
-
-
-ExpectedOutputs/ao_cr_num_sml.txt
-
-04 000001 000000 00000000 fifteen_digits_
-00 000000 000000 00000000                
+123456
+223456
+000000
 
 
-ExpectedOutputs/ao_cr_num_xct.txt
+Inputs/accountList_123456.txt
 
-04 123456 000000 00000000 fifteen_digits_
-00 000000 000000 00000000                
-
-
-ExpectedOutputs/ao_dl_nam_int.txt
-
-05 000001 000000 00000000 1              
-00 000000 000000 00000000                
+123456
+000000
 
 
-ExpectedOutputs/ao_dl_nam_sml.txt
+Inputs/accountList_1_2.txt
 
-05 000001 000000 00000000 abc            
-00 000000 000000 00000000                
-
-
-ExpectedOutputs/ao_dl_xct.txt
-
-05 123456 000000 00000000 fifteen_digits_
-00 000000 000000 00000000                
+000001
+000002
+000000
 
 
-ExpectedOutputs/ao_dp_amt_sml.txt
+Inputs/accountList_1.txt
 
-05 000001 000000 00000001                
-00 000000 000000 00000000                
-
-
-ExpectedOutputs/ao_dp_num_sml.txt
-
-01 123456 000000 00000001                
-00 000000 000000 00000000                
+000001
+000000
 
 
-ExpectedOutputs/ao_dp_xct.txt
+Inputs/accountList_empty.txt
 
-01 123456 000000 99999999                
-00 000000 000000 00000000                
-
-
-ExpectedOutputs/empty.txt
-
-00 000000 000000 00000000                
+000000
 
 
-ExpectedOutputs/ro_dp_cor.txt
+ExpectedPrompts/ap_cr_dep.txt
 
-01_000001_000001_00100000_NNNNNNNNNNNNNNN
-
-
-ExpectedOutputs/ro_tr_cor.txt
-
-03_000001_000002_00100000_NNNNNNNNNNNNNNN
-
-
-ExpectedOutputs/ro_wd_cor.txt
-
-02_000001_000002_00100000_NNNNNNNNNNNNNNN
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a new account number:
+Enter a new account name:
+Enter a valid command:
+Enter a valid account number:
+Enter a valid command:
 
 
 ExpectedPrompts/ap_cr_nam_big.txt
@@ -221,6 +185,45 @@ Enter a valid command:
 Enter a new account number:
 
 
+ExpectedPrompts/ap_cr_tra.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a new account number:
+Enter a new account name:
+Enter a valid command:
+Enter a valid account number to transfer from:
+Enter a valid command:
+Enter a valid command:
+Enter a valid command:
+
+
+ExpectedPrompts/ap_cr_wtd.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a new account number:
+Enter a new account name:
+Enter a valid command:
+Enter a valid account number:
+Enter a valid command:
+
+
+ExpectedPrompts/ap_dl_dep.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number:
+Enter a valid account name:
+Enter a valid command:
+Enter a valid account number:
+Error: Account does not exist.
+Enter a valid command:
+
+
 ExpectedPrompts/ap_dl_nam_big.txt
 
 Enter 'login' to begin:
@@ -349,6 +352,34 @@ Enter a valid command:
 Enter a valid account number:
 
 
+ExpectedPrompts/ap_dl_tra.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number:
+Enter a valid account name:
+Enter a valid command:
+Enter a valid account number to transfer from:
+Error: Account does not exist.
+Enter a valid command:
+Enter a valid command:
+Enter a valid command:
+
+
+ExpectedPrompts/ap_dl_wtd.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number:
+Enter a valid account name:
+Enter a valid command:
+Enter a valid account number:
+Error: Account does not exist.
+Enter a valid command:
+
+
 ExpectedPrompts/ap_dl_xct.txt
 
 Enter 'login' to begin:
@@ -444,6 +475,16 @@ Error: Account does not exist.
 Enter a valid command:
 
 
+ExpectedPrompts/ap_dp_num_big.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number:
+Error: Account numbers must be 1-6 digits.
+Enter a valid command:
+
+
 ExpectedPrompts/ap_dp_num_dec.txt
 
 Enter 'login' to begin:
@@ -471,6 +512,16 @@ Are you 'retail' or 'agent'?
 Enter a valid command:
 Enter a valid account number:
 Enter deposit amount:
+Enter a valid command:
+
+
+ExpectedPrompts/ap_dp_num_str.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number:
+Error: Account numbers must be 1-6 digits.
 Enter a valid command:
 
 
@@ -523,6 +574,428 @@ Enter 'login' to begin:
 Are you 'retail' or 'agent'?
 Enter a valid command:
 
+ExpectedPrompts/ap_tr_amt_big.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number to transfer from:
+Enter a valid account number to transfer to:
+Enter transfer amount:
+Error: Transactions above $999,999.99 are not accepted in 'agent' mode.
+Enter a valid command:
+
+
+ExpectedPrompts/ap_tr_amt_dec.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number to transfer from:
+Enter a valid account number to transfer to:
+Enter transfer amount:
+Error: Amount must be entered in cents and greater than 0.
+Enter a valid command:
+
+
+ExpectedPrompts/ap_tr_amt_neg.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number to transfer from:
+Enter a valid account number to transfer to:
+Enter transfer amount:
+Error: Amount must be entered in cents and greater than 0.
+Enter a valid command:
+
+
+ExpectedPrompts/ap_tr_amt_sml.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number to transfer from:
+Enter a valid account number to transfer to:
+Enter transfer amount:
+Enter a valid command:
+
+
+ExpectedPrompts/ap_tr_amt_str.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number to transfer from:
+Enter a valid account number to transfer to:
+Enter transfer amount:
+Error: Amount must be entered in cents and greater than 0.
+Enter a valid command:
+
+
+ExpectedPrompts/ap_tr_amt.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number to transfer from:
+Enter a valid account number to transfer to:
+Enter transfer amount:
+Enter a valid command:
+
+
+ExpectedPrompts/ap_tr_amt_zer.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number to transfer from:
+Enter a valid account number to transfer to:
+Enter transfer amount:
+Error: Amount must be entered in cents and greater than 0.
+Enter a valid command:
+
+
+ExpectedPrompts/ap_tr_num2_big.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number to transfer from:
+Enter a valid account number to transfer to:
+Error: Account numbers must be 1-6 digits.
+Enter a valid command:
+
+
+ExpectedPrompts/ap_tr_num2_dec.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number to transfer from:
+Enter a valid account number to transfer to:
+Error: Account numbers must be 1-6 digits.
+Enter a valid command:
+
+
+ExpectedPrompts/ap_tr_num2_dne.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number to transfer from:
+Enter a valid account number to transfer to:
+Error: Account does not exist.
+Enter a valid command:
+
+
+ExpectedPrompts/ap_tr_num2_neg.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number to transfer from:
+Enter a valid account number to transfer to:
+Error: Account numbers must be 1-6 digits.
+Enter a valid command:
+
+
+ExpectedPrompts/ap_tr_num2_str.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number to transfer from:
+Enter a valid account number to transfer to:
+Error: Account numbers must be 1-6 digits.
+Enter a valid command:
+
+
+ExpectedPrompts/ap_tr_num2.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number to transfer from:
+Enter a valid account number to transfer to:
+Enter transfer amount:
+
+
+ExpectedPrompts/ap_tr_num2_zer.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number to transfer from:
+Enter a valid account number to transfer to:
+Error: Account does not exist.
+Enter a valid command:
+
+
+ExpectedPrompts/ap_tr_num_big.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number to transfer from:
+Error: Account numbers must be 1-6 digits.
+Enter a valid command:
+
+
+ExpectedPrompts/ap_tr_num_dec.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number to transfer from:
+Error: Account numbers must be 1-6 digits.
+Enter a valid command:
+
+
+ExpectedPrompts/ap_tr_num_dne.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number to transfer from:
+Error: Account does not exist.
+Enter a valid command:
+
+
+ExpectedPrompts/ap_tr_num_neg.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number to transfer from:
+Error: Account numbers must be 1-6 digits.
+Enter a valid command:
+
+
+ExpectedPrompts/ap_tr_num_sml.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number to transfer from:
+Enter a valid account number to transfer to:
+Enter transfer amount:
+Enter a valid command:
+
+
+ExpectedPrompts/ap_tr_num_str.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number to transfer from:
+Error: Account numbers must be 1-6 digits.
+Enter a valid command:
+
+
+ExpectedPrompts/ap_tr_num.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number to transfer from:
+Enter transfer amount:
+
+
+ExpectedPrompts/ap_tr_num_zer.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number to transfer from:
+Error: Account does not exist.
+Enter a valid command:
+
+
+ExpectedPrompts/ap_tr_qui.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number to transfer from:
+
+
+ExpectedPrompts/ap_tr_sam.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number to transfer from:
+Enter a valid account number to transfer to:
+Error: Cannot transfer to the same account.
+Enter a valid command:
+
+
+ExpectedPrompts/ap_tr_xct.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number to transfer from:
+Enter a valid account number to transfer to:
+Enter transfer amount:
+Enter a valid command:
+
+
+ExpectedPrompts/ap_wd_amt_big.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number:
+Enter withdraw amount:
+Error: Transactions above $999,999.99 are not accepted in 'agent' mode.
+Enter a valid command:
+
+
+ExpectedPrompts/ap_wd_amt_dec.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number:
+Enter withdraw amount:
+Error: Amount must be entered in cents and greater than 0.
+Enter a valid command:
+
+
+ExpectedPrompts/ap_wd_amt_neg.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number:
+Enter withdraw amount:
+Error: Amount must be entered in cents and greater than 0.
+Enter a valid command:
+
+
+ExpectedPrompts/ap_wd_amt_sml.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number:
+Enter withdraw amount:
+Enter a valid command:
+
+
+ExpectedPrompts/ap_wd_amt_str.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number:
+Enter withdraw amount:
+Error: Amount must be entered in cents and greater than 0.
+Enter a valid command:
+
+
+ExpectedPrompts/ap_wd_amt.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number:
+Enter withdraw amount:
+Enter a valid command:
+
+
+ExpectedPrompts/ap_wd_amt_zer.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number:
+Enter withdraw amount:
+Error: Amount must be entered in cents and greater than 0.
+Enter a valid command:
+
+
+ExpectedPrompts/ap_wd_dne.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number:
+Error: Account does not exist.
+Enter a valid command:
+
+
+ExpectedPrompts/ap_wd_num_big.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number:
+Error: Account numbers must be 1-6 digits.
+Enter a valid command:
+
+
+ExpectedPrompts/ap_wd_num_dec.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number:
+Error: Account numbers must be 1-6 digits.
+Enter a valid command:
+
+
+ExpectedPrompts/ap_wd_num_neg.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number:
+Error: Account numbers must be 1-6 digits.
+Enter a valid command:
+
+
+ExpectedPrompts/ap_wd_num_sml.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number:
+Enter withdraw amount:
+Enter a valid command:
+
+
+ExpectedPrompts/ap_wd_num_str.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number:
+Error: Account numbers must be 1-6 digits.
+Enter a valid command:
+
+
+ExpectedPrompts/ap_wd_num.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number:
+Enter withdraw amount:
+
+
+ExpectedPrompts/ap_wd_num_zer.txt
+
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number:
+Error: Account does not exist.
+Enter a valid command:
+
+
 ExpectedPrompts/ap_wd_qui.txt
 
 Enter 'login' to begin:
@@ -531,55 +1004,14 @@ Enter a valid command:
 Enter a valid account number:
 
 
-ExpectedPrompts/copy.sh
+ExpectedPrompts/ap_wd_xct.txt
 
-#full deposit output
-DEP_FULL=ap_dp_amt.txt
-
-for LABEL in ap_dp_xct.txt ap_dp_num_sml.txt ap_dp_amt_sml.txt
-do
-	cp "$DEP_FULL" "$LABEL"
-done
-
-#Command, valid num, error 1-6 digits, command
-NUM_ERROR=ap_dl_num_neg.txt
-
-for LABEL in ap_dp_num_dec.txt
-do
-	cp "$NUM_ERROR" "$LABEL"
-done
-
-#Command, num, dne, command
-DNE=ap_dl_num_zer.txt
-
-for LABEL in ap_dp_num_zer.txt
-do
-	cp "$DNE" "$LABEL"
-done
-
-#Command, num, amt, cents >0, command
-AMT_ERROR=ap_dp_amt_str.txt
-
-for LABEL in ap_dp_amt_dec.txt ap_dp_amt_neg.txt ap_dp_amt_zer.txt
-do
-	cp "$AMT_ERROR" "$LABEL"
-done
-
-#full create output
-CR_FULL=ap_cr_nam.txt
-
-for LABEL in ap_cr_num_sml.txt ap_cr_nam_sml.txt ap_cr_nam_big.txt ap_cr_nam_int.txt
-do
-	cp "$CR_FULL" "$LABEL"
-done
-
-#command, new num, error 1-6 digits, command
-NEW_NUM_ERROR=ap_cr_num_big.txt
-
-for LABEL in ap_cr_num_str.txt ap_cr_num_neg.txt ap_cr_num_dec.txt
-do
-	cp "$NEW_NUM_ERROR" "$LABEL"
-done
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number:
+Enter withdraw amount:
+Enter a valid command:
 
 
 ExpectedPrompts/empty.txt
@@ -941,6 +1373,20 @@ Enter a valid account number:
 Enter a valid command:
 
 
+ExpectedPrompts/rp_wd_ovr.txt
+
+Enter ‘login’ to begin:
+Are you ‘retail’ or ‘agent’:
+Enter a valid command:
+Enter a valid account number:
+Enter an amount to be deposited:
+Enter a valid command:
+Enter a valid account number:
+Enter an amount to be deposited:
+Error: You can not withdraw any more from this account today
+Enter a valid command:
+
+
 ExpectedPrompts/rp_wd_qut.txt
 
 Enter ‘login’ to begin:
@@ -970,5 +1416,121 @@ Enter a valid account number:
 Enter withdraw amount:
 Error: Amount must be greater than 0.
 Enter a valid command:
+
+
+ExpectedOutputs/ao_cr_nam_int.txt
+
+04 000001 000000 00000000 1              
+00 000000 000000 00000000                
+
+
+ExpectedOutputs/ao_cr_nam_sml.txt
+
+04 000001 000000 00000000 abc            
+00 000000 000000 00000000                
+
+
+ExpectedOutputs/ao_cr_num_sml.txt
+
+04 000001 000000 00000000 fifteen_digits_
+00 000000 000000 00000000                
+
+
+ExpectedOutputs/ao_cr_num_xct.txt
+
+04 123456 000000 00000000 fifteen_digits_
+00 000000 000000 00000000                
+
+
+ExpectedOutputs/ao_dl_nam_int.txt
+
+05 000001 000000 00000000 1              
+00 000000 000000 00000000                
+
+
+ExpectedOutputs/ao_dl_nam_sml.txt
+
+05 000001 000000 00000000 abc            
+00 000000 000000 00000000                
+
+
+ExpectedOutputs/ao_dl_xct.txt
+
+05 123456 000000 00000000 fifteen_digits_
+00 000000 000000 00000000                
+
+
+ExpectedOutputs/ao_dp_amt_sml.txt
+
+01 000001 000000 00000001                
+00 000000 000000 00000000                
+
+
+ExpectedOutputs/ao_dp_num_sml.txt
+
+01 000001 000000 99999999                
+00 000000 000000 00000000                
+
+
+ExpectedOutputs/ao_dp_xct.txt
+
+01 123456 000000 99999999                
+00 000000 000000 00000000                
+
+
+ExpectedOutputs/ao_tr_amt_sml.txt
+
+03 000001 000002 00000001                
+00 000000 000000 00000000                
+
+
+ExpectedOutputs/ao_tr_num_sml.txt
+
+03 000001 000002 99999999                
+00 000000 000000 00000000                
+
+
+ExpectedOutputs/ao_tr_xct.txt
+
+03 123456 223456 99999999                
+00 000000 000000 00000000                
+
+
+ExpectedOutputs/ao_wd_amt_sml.txt
+
+02 000001 000000 00000001                
+00 000000 000000 00000000                
+
+
+ExpectedOutputs/ao_wd_num_sml.txt
+
+02 000001 000000 99999999                
+00 000000 000000 00000000                
+
+
+ExpectedOutputs/ao_wd_xct.txt
+
+02 123456 000000 99999999                
+00 000000 000000 00000000                
+
+
+ExpectedOutputs/empty.txt
+
+00 000000 000000 00000000                
+
+
+ExpectedOutputs/ro_dp_cor.txt
+
+01_000001_000001_00100000_NNNNNNNNNNNNNNN
+
+
+ExpectedOutputs/ro_tr_cor.txt
+
+03_000001_000002_00100000_NNNNNNNNNNNNNNN
+
+
+ExpectedOutputs/ro_wd_cor.txt
+
+02_000001_000002_00100000_NNNNNNNNNNNNNNN
 
 
