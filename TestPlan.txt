@@ -94,6 +94,7 @@ Assumptions and Other notes:
 -We will implement a quit function for testing purposes that will allow the scripts to exit the program at any point (even in the middle of a command). We have included test cases for this function.
 -Account names longer than 15 characters will not be accepted
 -When deleting an account, the account name will be asked for but not checked since the front end doesn't know the correct account name for a given number.
+-Transfers are not accepted from an account to itself
 
 Invalid Input:
 -The program will repeatedly ask to login until the user does. It will then repeatedly ask for retail or agent. Afterwards, when invalid input is entered, the program will exit the current command and prompt for a valid command.
