@@ -1,0 +1,3 @@
+Enter ‘login’ to begin:
+Are you 'retail' or 'agent'?
+Enter ‘login’ to begin:
