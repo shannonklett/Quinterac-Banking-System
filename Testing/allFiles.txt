@@ -404,23 +404,28 @@ ExpectedPrompts/empty.txt
 ExpectedPrompts/general_double_login.txt
 Enter ‘login’ to begin:
 Are you 'retail' or 'agent'?
-Are you 'retail' or 'agent'?ExpectedPrompts/general_login_quit.txt
+Are you 'retail' or 'agent'?
+ExpectedPrompts/general_login_quit.txt
 Enter ‘login’ to begin:
 Are you 'retail' or 'agent'?
-Enter ‘login’ to begin:ExpectedPrompts/general_login_while_logged_in.txt
+Enter ‘login’ to begin:
+ExpectedPrompts/general_login_while_logged_in.txt
 Enter ‘login’ to begin:
 Are you 'retail' or 'agent'?
 Enter a valid command:
-Enter a valid command:ExpectedPrompts/general_no_login.txt
+Enter a valid command:
+ExpectedPrompts/general_no_login.txt
 Enter ‘login’ to begin:
 Enter ‘login’ to begin:
 Enter ‘login’ to begin:
 Enter ‘login’ to begin:
 Enter ‘login’ to begin:
 Enter ‘login’ to begin:
-Enter ‘login’ to begin:ExpectedPrompts/general_quit_early.txt
 Enter ‘login’ to begin:
-Enter ‘login’ to begin:ExpectedPrompts/r_li_cor.txt
+ExpectedPrompts/general_quit_early.txt
+Enter ‘login’ to begin:
+Enter ‘login’ to begin:
+ExpectedPrompts/r_li_cor.txt
 Enter 'login' to begin:
 Are you 'retail' or 'agent'?
 Enter a valid command:ExpectedPrompts/rp_cr.txt
