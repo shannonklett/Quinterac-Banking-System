@@ -1,8 +1,3 @@
-Purpose of Document:
-1) Outline how tests are organized (directories)
-2) How they will be run (shell scripts)
-3) How output will be stored/organized for reporting/comparison
-
 Test Input and Output Organization (Folder Structure):
 Testing/
     ExpectedOutputs/
@@ -54,6 +49,7 @@ Our test names are separated into 3-4 sections depending on the type of command.
     str - string
     int - number used (when string expected)
     dne - account does not exist
+    xst - account already exists
     cor - correct input
     out - logout while in an operation
     
@@ -63,6 +59,7 @@ Our masterScript.sh is responsible for running all test cases. It will call the 
 See pseudo-code below for test run. Basically, each run of the masterScript will create a new folder in FailedOutputs and FailedPrompts named with the current date and time. For each test, it will save temp output and prompt files, then compare them to the expected ones (using diff). If different, it saves the sdiff of the files to the appropriate folders for later review and adds the test name to the FailedTests.txt file.
 
 Pseudo-code for running test_a:
+    read in necessary input file
     run test_a.sh
     save file output to Temp/output.txt
     save prompts to Temp/prompt.txt
@@ -90,3 +87,30 @@ first input
 second input
 (third input)
 logout
+
+Assumptions and Other notes:
+-We will implement a quit function for testing purposes that will allow the scripts to exit the program at any point (even in the middle of a command). We have included test cases for this function.
+-Account names longer than 15 characters will not be accepted
+-When deleting an account, the account name will be asked for but not checked since the front end doesn't know the correct account name for a given number.
+
+Invalid Input:
+-The program will repeatedly ask to login until the user does. It will then repeatedly ask for retail or agent. Afterwards, when invalid input is entered, the program will exit the current command and prompt for a valid command.
+Ex:
+Enter 'login' to begin:
+blah
+Enter 'login' to begin:
+login
+Are you 'retail' or 'agent'?
+blah
+Are you 'retail' or 'agent'?
+agent
+Enter a valid command:
+blah
+Enter a valid command:
+create
+Enter a new account number:
+blah
+Error: Account numbers must be 1-6 digits.
+Enter a valid command:
+
+
