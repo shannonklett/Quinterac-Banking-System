@@ -33,7 +33,7 @@ done
 #full create output
 CR_FULL=ap_cr_nam.txt
 
-for LABEL in ap_cr_num_sml.txt
+for LABEL in ap_cr_num_sml.txt ap_cr_nam_sml.txt ap_cr_nam_big.txt ap_cr_nam_int.txt
 do
 	cp "$CR_FULL" "$LABEL"
 done
