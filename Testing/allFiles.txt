@@ -36,9 +36,12 @@ ExpectedOutputs/catAll.sh~
 ExpectedOutputs/empty.txt
 00 000000 000000 00000000                
 ExpectedOutputs/ro_dp_cor.txt
-01_000001_000001_00100000_NNNNNNNNNNNNNNNExpectedOutputs/ro_tr_cor.txt
-03_000001_000002_00100000_NNNNNNNNNNNNNNNExpectedOutputs/ro_wd_cor.txt
-03_000001_000002_00100000_NNNNNNNNNNNNNNNExpected Prompts:
+01_000001_000001_00100000_NNNNNNNNNNNNNNN
+ExpectedOutputs/ro_tr_cor.txt
+03_000001_000002_00100000_NNNNNNNNNNNNNNN
+ExpectedOutputs/ro_wd_cor.txt
+02_000001_000002_00100000_NNNNNNNNNNNNNNN
+Expected Prompts:
 ExpectedPrompts/ap_cr_nam_big.txt
 Enter 'login' to begin:
 Are you 'retail' or 'agent'?
