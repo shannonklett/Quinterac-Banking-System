@@ -80,6 +80,8 @@ delete
 deposit
 withdrawal
 transfer
+create followed by deposit, withdrawal, transfer, delete
+delete followed by deposit, withdrawal, transfer, create
 
 Within each command, the order tested will be:
 command
