@@ -55,7 +55,7 @@ Our test names are separated into 3-4 sections depending on the type of command.
     int - number used (when string expected)
     dne - account does not exist
     cor - correct input
-    out - logout while in an operation    
+    out - logout while in an operation
     
 Test Run Plan:
 Our masterScript.sh is responsible for running all test cases. It will call the individual scripts from Scripts/ folder in the correct order.
