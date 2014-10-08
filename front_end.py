@@ -30,6 +30,33 @@ Loggedin = False
 Agent = False
 Running = True
 
+def inAccountFile(num):
+	#check if account number is in master file
+	return False
+
+def checkAccountNum(num):
+	try:
+		num = int(num)
+	except ValueError:
+		print error_account_num
+		return False	
+	if num>999999:
+		print error_account_num
+	elif num<1:
+		print error_account_neg
+	elif inAccountFile(num):
+		print error_account_exists
+	else:
+		return True
+	return False #error has occured
+	
+def checkAccountName(name):
+	if len(name)>15 or len(name)<1:
+		print error_account_nam
+	else:
+		return True
+	return False #error has occured	
+
 def create():
 	return
 	
@@ -89,7 +116,7 @@ def withdraw():
 			print "Withdraw Successful"
 	return 
 	
-#Main Execution\
+#Main Execution
 while (Running):
 	while (Loggedin == False):
 		print prompt_login
