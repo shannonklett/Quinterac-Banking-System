@@ -26,16 +26,93 @@ error_transfer_same ="Error: Cannot transfer to the same account."
 
 #TO PAD SPACES use "hey".ljust(15)
 
+Loggedin = False
+Agent = False
+Running = True
+
 def create():
 	return
 	
 def deposit():	
 	print prompt_valid_account_num
-	account_num = input()
+	account_num = raw_input()
+	print prompt_deposit
+	deposit_val = raw_input()
+	if Agent:
+		if deposit_val > 99999999:
+			print error_agent_amount
+		else:
+			print "Deposit Successful"
+	else:
+		if deposit_val > 100000:
+			print error_retail_amount
+		else:
+			print "Deposit Successful"
+
 	
 	return 
 	
-#Main Execution
-print prompt_login
-print "heyy".ljust(15)+"boo"
-deposit()
+
+def transfer():	
+	print prompt_transfer_from
+	account_num_from = raw_input()
+	print prompt_transfer_to
+	account_num_to = raw_input()
+	print prompt_transfer
+	transfer_val = raw_input()
+	if Agent:
+		if transfer_val > 99999999:
+			print error_agent_amount
+		else:
+			print "Transfer Successful"
+	else:
+		if tranfer_val > 100000:
+			print error_retail_amount
+		else:
+			print "Transfer Successful"
+	return
+
+def withdraw():	
+	print prompt_valid_account_num
+	account_num = raw_input()
+	print prompt_deposit
+	transfer_val = raw_input()
+	if Agent:
+		if withdraw_val > 99999999:
+			print error_agent_amount
+		else:
+			print "Withdraw Successful"
+	else:
+		if withdraw_val > 100000:
+			print error_retail_amount
+		else:
+			print "Withdraw Successful"
+	return 
+	
+#Main Execution\
+while (Running):
+	while (Loggedin == False):
+		print prompt_login
+		log = raw_input()
+		if (log == 'Agent' or log == 'Agent'):
+			Loggedin = True
+			Agent = True
+		elif (log == 'Retail' or log == 'retail'):
+			Loggedin = True
+			Agent = False
+		else:
+			None
+	while (Loggedin == True):
+		print prompt_command
+		com = raw_input()
+		if (com == 'Deposit' or com == 'deposit'):
+			deposit()
+		elif(com == 'Withdraw' or com == 'withdraw'):
+			withdraw()
+		elif(com == 'Transfer' or com == 'transfer'):
+			transfer()
+		elif(com == 'Logout' or com == 'logout'):
+			Loggedin = False
+		else:
+			None			
+	Running = False
