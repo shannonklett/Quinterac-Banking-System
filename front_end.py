@@ -64,6 +64,10 @@ def makeTransactionString(type=00, account1=000000, account2=000000, amount=0000
 	amount = str(amount).rjust(8, "0")
 	name = name.ljust(15)
 	return "%s %s %s %s %s\n" %(type, account1, account2, amount, name)
+	
+def readAccountFile(filename):
+	lines = [line.strip() for line in open(filename)]
+	return lines
 
 def create():
 	if Agent:
@@ -210,7 +214,9 @@ def transfer():
 			return makeTransactionString(3, account_num_to, account_num_from, transfer_val)
 	return None
 	
-#Main Execution\
+#Main Execution
+accounts = readAccountFile('Testing/Inputs/accountList_1_2.txt')
+print accounts
 while (Running):
 	while (Loggedin == False):
 		print prompt_login
