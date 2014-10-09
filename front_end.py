@@ -63,7 +63,7 @@ def makeTransactionString(type=00, account1=000000, account2=000000, amount=0000
 	account2 = str(account2).rjust(6, "0")
 	amount = str(amount).rjust(8, "0")
 	name = name.ljust(15)
-	return "%s %s %s %s %s.\n" %(type, account1, account2, amount, name)
+	return "%s %s %s %s %s\n" %(type, account1, account2, amount, name)
 
 def create():
 	if Agent:
@@ -149,7 +149,7 @@ def withdraw():
 			return None
 		else:
 			print "Withdraw Successful"
-			return "02_" + "_000000_" + account_num + "_" +withdraw_val + "_               "
+			return makeTransactionString(2, account2 = account_num, amount = withdraw_val)
 	else:
 		if int(withdraw_val) > 100000:
 			print error_retail_amount
@@ -159,7 +159,7 @@ def withdraw():
 			return None
 		else:
 			print "Withdraw Successful"
-			return "02_" + "_000000_" + account_num + "_" +withdraw_val + "_               "
+			return makeTransactionString(2, account2 = account_num, amount = withdraw_val)
 	return None
 def transfer():	
 	print prompt_transfer_from
@@ -192,7 +192,7 @@ def transfer():
 			return None
 		else:
 			print "Transfer Successful"
-			return "03_" + account_num_from + "_" + account_num_to + "_" + transfer_val + "_               "
+			return makeTransactionString(3, account_num_to, account_num_from, transfer_val)
 	else:
 		if int(transfer_val) > 100000:
 			print error_retail_amount
@@ -202,7 +202,7 @@ def transfer():
 			return None
 		else:
 			print "Transfer Successful"
-			return "03_" + account_num_from + "_" + account_num_to + "_" + transfer_val + "_               "
+			return makeTransactionString(3, account_num_to, account_num_from, transfer_val)
 	return None
 	
 #Main Execution\
@@ -235,6 +235,7 @@ while (Running):
 				summary = None
 		elif(com == 'Withdraw' or com == 'withdraw'):
 			summary = withdraw()
+			print summary
 			if (summary == None):
 				None
 			else:
@@ -242,6 +243,7 @@ while (Running):
 				summary = None
 		elif(com == 'Transfer' or com == 'transfer'):
 			summary = transfer()
+			print summary
 			if (summary == None):
 				None
 			else:
