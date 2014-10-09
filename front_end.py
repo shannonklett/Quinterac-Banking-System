@@ -64,11 +64,11 @@ def makeTransactionString(type=00, account1=000000, account2=000000, amount=0000
 	amount = str(amount).rjust(8, "0")
 	name = name.ljust(15)
 	return "%s %s %s %s %s\n" %(type, account1, account2, amount, name)
-	
+
 def readAccountFile(filename):
 	lines = [line.strip() for line in open(filename)]
-	return lines
-
+	return lines	
+	
 def create():
 	if Agent:
 		print prompt_new_account_num
@@ -94,14 +94,31 @@ def delete():
 	else:	#retail mode
 		print error_permission
 	return None #error occured	
+
+def val_check(val):
+	if Agent:
+		if int(val) > 99999999:
+			print error_agent_amount
+			return False
+		elif int(val) < 0:
+			print error_amount_type
+			return False
+		else:
+			return True
+	else:	
+		if int(val) > 100000:
+			print error_retail_amount
+			return False
+		elif int(val) < 0:
+			print error_amount_type
+			return False
+		else:
+			return True
 	
 def deposit():	
 	print prompt_valid_account_num
 	account_num = raw_input()
-	if (checkAccountNum(account_num)):
-		while (len(account_num) < 6):
-			account_num = "0" + account_num
-	else:
+	if (checkAccountNum(account_num) == False):
 		return None
 	print prompt_deposit
 	deposit_val = raw_input()
@@ -110,36 +127,17 @@ def deposit():
 	except ValueError:
 		print error_amount_type
 		return None
-	if Agent:
-		if int(deposit_val) > 99999999:
-			print error_agent_amount
-			return None
-		elif int(deposit_val) < 0:
-			print error_amount_type
-			return None
-		else:
-			print "Deposit Successful"
-			return "01_" + account_num + "_000000_" + deposit_val + "_               "
-
+	if(val_check(deposit_val)):
+		print "Deposit Successful"
+		return makeTransactionString(1, account_num, amount = deposit_val)
 	else:
-		if int(deposit_val) > 100000:
-			print error_retail_amount
-			return None
-		elif int(deposit_val) < 0:
-			print error_amount_type
-			return None
-		else:
-			print "Deposit Successful"
-			return "01_" + account_num + "_000000_" + deposit_val + "_               "
+		return None
 	return None
 
 def withdraw():	
 	print prompt_valid_account_num
 	account_num = raw_input()
-	if (checkAccountNum(account_num)):
-		while (len(account_num) < 6):
-			account_num = "0" + account_num
-	else:
+	if (checkAccountNum(account_num) == False):
 		return None
 	print prompt_withdraw
 	withdraw_val = raw_input()
@@ -148,42 +146,21 @@ def withdraw():
 	except ValueError:
 		print error_amount_type
 		return None
-	if Agent:
-		if int(withdraw_val) > 99999999:
-			print error_agent_amount
-			return None
-		elif int(withdraw_val) < 0:
-			print error_amount_type
-			return None
-		else:
-			print "Withdraw Successful"
-			return makeTransactionString(2, account2 = account_num, amount = withdraw_val)
+	if (val_check(withdraw_val)):
+		print "Withdraw Successful"
+		return makeTransactionString(2, account2 = account_num, amount = withdraw_val)
 	else:
-		if int(withdraw_val) > 100000:
-			print error_retail_amount
-			return None
-		elif int(withdraw_val) < 0:
-			print error_amount_type
-			return None
-		else:
-			print "Withdraw Successful"
-			return makeTransactionString(2, account2 = account_num, amount = withdraw_val)
+		return None
 	return None
-	
+
 def transfer():	
 	print prompt_transfer_from
 	account_num_from = raw_input()
-	if (checkAccountNum(account_num_from)):
-		while (len(account_num_from) < 6):
-			account_num_from = "0" + account_num_from
-	else:
+	if (checkAccountNum(account_num_from) == False):
 		return None
 	print prompt_transfer_to
 	account_num_to = raw_input()
-	if (checkAccountNum(account_num_to)):
-		while (len(account_num_to) < 6):
-			account_num_to = "0" + account_num_to
-	else:
+	if (checkAccountNum(account_num_to) == False):
 		return None
 	print prompt_transfer
 	transfer_val = raw_input()
@@ -192,28 +169,13 @@ def transfer():
 	except ValueError:
 		print error_amount_type
 		return None
-	if Agent:
-		if int(transfer_val) > 99999999:
-			print error_agent_amount
-			return None
-		elif int(transfer_val) < 0:
-			print error_amount_type
-			return None
-		else:
-			print "Transfer Successful"
-			return makeTransactionString(3, account_num_to, account_num_from, transfer_val)
+	if (val_check(transfer_val)):
+		print "Transfer Successful"
+		return makeTransactionString(3, account_num_to, account_num_from, transfer_val)
 	else:
-		if int(transfer_val) > 100000:
-			print error_retail_amount
-			return None
-		elif int(transfer_val) < 0:
-			print error_amount_type
-			return None
-		else:
-			print "Transfer Successful"
-			return makeTransactionString(3, account_num_to, account_num_from, transfer_val)
+		return None
 	return None
-	
+
 #Main Execution
 accounts = readAccountFile('Testing/Inputs/accountList_1_2.txt')
 print accounts
@@ -241,17 +203,14 @@ while (Running):
 			summary = deposit()
 			if (summary != None):
 				temp_transaction_summary.append(summary)
-				summary = None
 		elif(com == 'Withdraw' or com == 'withdraw'):
 			summary = withdraw()
 			if (summary != None):
 				temp_transaction_summary.append(summary)
-				summary = None
 		elif(com == 'Transfer' or com == 'transfer'):
 			summary = transfer()
 			if (summary != None):
 				temp_transaction_summary.append(summary)
-				summary = None
 		elif(com == 'Create' or com == 'create'):
 			summary = create()	
 			if (summary != None):
