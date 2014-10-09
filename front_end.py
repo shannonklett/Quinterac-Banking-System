@@ -48,14 +48,14 @@ def checkAccountNum(num):
 		print error_account_exists
 	else:
 		return True
-	return False #error has occured
+	return False #error occured
 	
 def checkAccountName(name):
 	if len(name)>15 or len(name)<1:
 		print error_account_nam
 	else:
 		return True
-	return False #error has occured	
+	return False #error occured	
 
 def makeTransactionString(type=00, account1=000000, account2=000000, amount=00000000, name=""):
 	type = str(type).rjust(2, "0")
@@ -71,10 +71,12 @@ def create():
 		account_num = raw_input()
 		if checkAccountNum(account_num):
 			print prompt_new_account_nam
-			account_name = checkAccountName(raw_input())
+			account_name = raw_input()
+			if checkAccountName(account_name):
+				return makeTransactionString(4, account_num, name=account_name)
 	else:	#retail mode
 		print error_permission
-	return
+	return None #error occured
 	
 def delete():
 	if Agent:
@@ -82,10 +84,12 @@ def delete():
 		account_num = raw_input()
 		if checkAccountNum(account_num):
 			print prompt_valid_account_nam
-			account_name = checkAccountName(raw_input())
-	else:	
+			account_name = raw_input()
+			if checkAccountName(account_name):
+				return makeTransactionString(5, account_num, name=account_name)	
+	else:	#retail mode
 		print error_permission
-	return	
+	return None #error occured	
 	
 def deposit():	
 	print prompt_valid_account_num
@@ -161,6 +165,7 @@ def withdraw():
 			print "Withdraw Successful"
 			return makeTransactionString(2, account2 = account_num, amount = withdraw_val)
 	return None
+	
 def transfer():	
 	print prompt_transfer_from
 	account_num_from = raw_input()
@@ -228,31 +233,29 @@ while (Running):
 		com = raw_input()
 		if (com == 'Deposit' or com == 'deposit'):
 			summary = deposit()
-			if (summary == None):
-				None
-			else:
+			if (summary != None):
 				temp_transaction_summary.append(summary)
 				summary = None
 		elif(com == 'Withdraw' or com == 'withdraw'):
 			summary = withdraw()
-			print summary
-			if (summary == None):
-				None
-			else:
+			if (summary != None):
 				temp_transaction_summary.append(summary)
 				summary = None
 		elif(com == 'Transfer' or com == 'transfer'):
 			summary = transfer()
-			print summary
-			if (summary == None):
-				None
-			else:
+			if (summary != None):
 				temp_transaction_summary.append(summary)
 				summary = None
 		elif(com == 'Create' or com == 'create'):
-			create()	
+			summary = create()	
+			if (summary != None):
+				temp_transaction_summary.append(summary)
+				summary = None
 		elif(com == 'Delete' or com == 'delete'):
-			delete()	
+			summary = delete()
+			if (summary != None):
+				temp_transaction_summary.append(summary)
+				summary = None
 		elif(com == 'Logout' or com == 'logout'):
 			Loggedin = False
 			print temp_transaction_summary
