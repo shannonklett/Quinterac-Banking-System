@@ -25,8 +25,6 @@ error_account_exists = "Error: Account already exists."
 error_account_neg = "Error: Account number must be greater than 0."
 error_transfer_same ="Error: Cannot transfer to the same account."
 
-#TO PAD SPACES use "hey".ljust(15)
-
 Loggedin = False
 Agent = False
 Running = True
@@ -60,7 +58,26 @@ def checkAccountName(name):
 	return False #error has occured	
 
 def create():
+	if Agent:
+		print prompt_new_account_num
+		account_num = raw_input()
+		if checkAccountNum(account_num):
+			print prompt_new_account_nam
+			account_name = checkAccountName(raw_input())
+	else:	#retail mode
+		print error_permission
 	return
+	
+def delete():
+	if Agent:
+		print prompt_valid_account_num
+		account_num = raw_input()
+		if checkAccountNum(account_num):
+			print prompt_valid_account_nam
+			account_name = checkAccountName(raw_input())
+	else:	
+		print error_permission
+	return	
 	
 def deposit():	
 	print prompt_valid_account_num
@@ -98,8 +115,6 @@ def deposit():
 		else:
 			print "Deposit Successful"
 			return "01_" + account_num + "_000000_" + deposit_val + "_               "
-
-	
 	return None
 
 def withdraw():	
@@ -138,7 +153,6 @@ def withdraw():
 			print "Withdraw Successful"
 			return "02_" + "_000000_" + account_num + "_" +withdraw_val + "_               "
 	return None
-
 def transfer():	
 	print prompt_transfer_from
 	account_num_from = raw_input()
@@ -225,6 +239,10 @@ while (Running):
 			else:
 				temp_transaction_summary.append(summary)
 				summary = None
+		elif(com == 'Create' or com == 'create'):
+			create()	
+		elif(com == 'Delete' or com == 'delete'):
+			delete()	
 		elif(com == 'Logout' or com == 'logout'):
 			Loggedin = False
 			print temp_transaction_summary
