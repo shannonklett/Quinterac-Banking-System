@@ -63,11 +63,17 @@ def makeTransactionString(type=00, account1=000000, account2=000000, amount=0000
 	account2 = str(account2).rjust(6, "0")
 	amount = str(amount).rjust(8, "0")
 	name = name.ljust(15)
-	return "%s %s %s %s %s\n" %(type, account1, account2, amount, name)
+	return "%s %s %s %s %s" %(type, account1, account2, amount, name)
 
 def readAccountFile(filename):
 	lines = [line.strip() for line in open(filename)]
-	return lines	
+	return lines
+
+def writeTransactionFile(transactions):
+	f=open('Testing/transactionFile.txt', 'w+')
+	for item in transactions:
+		f.write("%s\n" % item)
+	f.write("%s" % makeTransactionString())		
 	
 def create():
 	if Agent:
@@ -215,15 +221,13 @@ while (Running):
 			summary = create()	
 			if (summary != None):
 				temp_transaction_summary.append(summary)
-				summary = None
 		elif(com == 'Delete' or com == 'delete'):
 			summary = delete()
 			if (summary != None):
 				temp_transaction_summary.append(summary)
-				summary = None
 		elif(com == 'Logout' or com == 'logout'):
 			Loggedin = False
-			print temp_transaction_summary
+			writeTransactionFile(temp_transaction_summary)
 		else:
 			None
 	print prompt_finish
