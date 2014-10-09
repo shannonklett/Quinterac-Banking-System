@@ -72,9 +72,17 @@ def deposit():
 		return None
 	print prompt_deposit
 	deposit_val = raw_input()
+	try:
+		int(deposit_val)
+	except ValueError:
+		print error_amount_type
+		return None
 	if Agent:
 		if int(deposit_val) > 99999999:
 			print error_agent_amount
+			return None
+		elif int(deposit_val) < 0:
+			print error_amount_type
 			return None
 		else:
 			print "Deposit Successful"
@@ -84,12 +92,15 @@ def deposit():
 		if int(deposit_val) > 100000:
 			print error_retail_amount
 			return None
+		elif int(deposit_val) < 0:
+			print error_amount_type
+			return None
 		else:
 			print "Deposit Successful"
 			return "01_" + account_num + "_000000_" + deposit_val + "_               "
 
 	
-	return 
+	return None
 
 def withdraw():	
 	print prompt_valid_account_num
@@ -101,50 +112,76 @@ def withdraw():
 		return None
 	print prompt_withdraw
 	withdraw_val = raw_input()
+	try:
+		int(withdraw_val)
+	except ValueError:
+		print error_amount_type
+		return None
 	if Agent:
 		if int(withdraw_val) > 99999999:
 			print error_agent_amount
+			return None
+		elif int(withdraw_val) < 0:
+			print error_amount_type
+			return None
 		else:
 			print "Withdraw Successful"
 			return "02_" + "_000000_" + account_num + "_" +withdraw_val + "_               "
 	else:
 		if int(withdraw_val) > 100000:
 			print error_retail_amount
+			return None
+		elif int(withdraw_val) < 0:
+			print error_amount_type
+			return None
 		else:
 			print "Withdraw Successful"
 			return "02_" + "_000000_" + account_num + "_" +withdraw_val + "_               "
-	return
+	return None
 
 def transfer():	
 	print prompt_transfer_from
 	account_num_from = raw_input()
 	if (checkAccountNum(account_num_from)):
-		while (len(account_num) < 6):
-			account_num = "0" + account_num
+		while (len(account_num_from) < 6):
+			account_num_from = "0" + account_num_from
 	else:
 		return None
 	print prompt_transfer_to
 	account_num_to = raw_input()
 	if (checkAccountNum(account_num_to)):
-		while (len(account_num) < 6):
-			account_num = "0" + account_num
+		while (len(account_num_to) < 6):
+			account_num_to = "0" + account_num_to
 	else:
 		return None
 	print prompt_transfer
 	transfer_val = raw_input()
+	try:
+		int(transfer_val)
+	except ValueError:
+		print error_amount_type
+		return None
 	if Agent:
 		if int(transfer_val) > 99999999:
 			print error_agent_amount
+			return None
+		elif int(transfer_val) < 0:
+			print error_amount_type
+			return None
 		else:
 			print "Transfer Successful"
 			return "03_" + account_num_from + "_" + account_num_to + "_" + transfer_val + "_               "
 	else:
 		if int(transfer_val) > 100000:
 			print error_retail_amount
+			return None
+		elif int(transfer_val) < 0:
+			print error_amount_type
+			return None
 		else:
 			print "Transfer Successful"
 			return "03_" + account_num_from + "_" + account_num_to + "_" + transfer_val + "_               "
-	return
+	return None
 	
 #Main Execution\
 while (Running):
