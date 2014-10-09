@@ -11,6 +11,7 @@ prompt_withdraw = "Enter withdraw amount:"
 prompt_transfer_from = "Enter a valid account number to transfer from:"
 prompt_transfer_to = "Enter a valid account number to transfer to:"
 prompt_transfer = "Enter transfer amount:"
+prompt_finish = "If you would like to shut down, type 'Quit'"
 
 #global errors
 error_account_num = "Error: Account numbers must be 1-6 digits."
@@ -29,6 +30,7 @@ error_transfer_same ="Error: Cannot transfer to the same account."
 Loggedin = False
 Agent = False
 Running = True
+temp_transaction_summary = []
 
 def inAccountFile(num):
 	#check if account number is in master file
@@ -63,83 +65,137 @@ def create():
 def deposit():	
 	print prompt_valid_account_num
 	account_num = raw_input()
+	if (checkAccountNum(account_num)):
+		while (len(account_num) < 6):
+			account_num = "0" + account_num
+	else:
+		return None
 	print prompt_deposit
 	deposit_val = raw_input()
 	if Agent:
-		if deposit_val > 99999999:
+		if int(deposit_val) > 99999999:
 			print error_agent_amount
+			return None
 		else:
 			print "Deposit Successful"
+			return "01_" + account_num + "_000000_" + deposit_val + "_               "
+
 	else:
-		if deposit_val > 100000:
+		if int(deposit_val) > 100000:
 			print error_retail_amount
+			return None
 		else:
 			print "Deposit Successful"
+			return "01_" + account_num + "_000000_" + deposit_val + "_               "
 
 	
 	return 
-	
-
-def transfer():	
-	print prompt_transfer_from
-	account_num_from = raw_input()
-	print prompt_transfer_to
-	account_num_to = raw_input()
-	print prompt_transfer
-	transfer_val = raw_input()
-	if Agent:
-		if transfer_val > 99999999:
-			print error_agent_amount
-		else:
-			print "Transfer Successful"
-	else:
-		if tranfer_val > 100000:
-			print error_retail_amount
-		else:
-			print "Transfer Successful"
-	return
 
 def withdraw():	
 	print prompt_valid_account_num
 	account_num = raw_input()
-	print prompt_deposit
-	transfer_val = raw_input()
+	if (checkAccountNum(account_num)):
+		while (len(account_num) < 6):
+			account_num = "0" + account_num
+	else:
+		return None
+	print prompt_withdraw
+	withdraw_val = raw_input()
 	if Agent:
-		if withdraw_val > 99999999:
+		if int(withdraw_val) > 99999999:
 			print error_agent_amount
 		else:
 			print "Withdraw Successful"
+			return "02_" + "_000000_" + account_num + "_" +withdraw_val + "_               "
 	else:
-		if withdraw_val > 100000:
+		if int(withdraw_val) > 100000:
 			print error_retail_amount
 		else:
 			print "Withdraw Successful"
-	return 
+			return "02_" + "_000000_" + account_num + "_" +withdraw_val + "_               "
+	return
+
+def transfer():	
+	print prompt_transfer_from
+	account_num_from = raw_input()
+	if (checkAccountNum(account_num_from)):
+		while (len(account_num) < 6):
+			account_num = "0" + account_num
+	else:
+		return None
+	print prompt_transfer_to
+	account_num_to = raw_input()
+	if (checkAccountNum(account_num_to)):
+		while (len(account_num) < 6):
+			account_num = "0" + account_num
+	else:
+		return None
+	print prompt_transfer
+	transfer_val = raw_input()
+	if Agent:
+		if int(transfer_val) > 99999999:
+			print error_agent_amount
+		else:
+			print "Transfer Successful"
+			return "03_" + account_num_from + "_" + account_num_to + "_" + transfer_val + "_               "
+	else:
+		if int(transfer_val) > 100000:
+			print error_retail_amount
+		else:
+			print "Transfer Successful"
+			return "03_" + account_num_from + "_" + account_num_to + "_" + transfer_val + "_               "
+	return
 	
-#Main Execution
+#Main Execution\
 while (Running):
 	while (Loggedin == False):
 		print prompt_login
 		log = raw_input()
-		if (log == 'Agent' or log == 'Agent'):
-			Loggedin = True
-			Agent = True
-		elif (log == 'Retail' or log == 'retail'):
-			Loggedin = True
-			Agent = False
-		else:
-			None
+		while (log == 'Login' or log == 'login'):
+			print prompt_retail_agent
+			user_type = raw_input()
+			if (user_type == 'Agent' or user_type == 'agent'):
+				Loggedin = True
+				Agent = True
+				log = None
+			elif (user_type == 'Retail' or user_type == 'retail'):
+				Loggedin = True
+				Agent = False
+				log = None
+			else:
+				None
 	while (Loggedin == True):
 		print prompt_command
 		com = raw_input()
 		if (com == 'Deposit' or com == 'deposit'):
-			deposit()
+			summary = deposit()
+			if (summary == None):
+				None
+			else:
+				temp_transaction_summary.append(summary)
+				summary = None
 		elif(com == 'Withdraw' or com == 'withdraw'):
-			withdraw()
+			summary = withdraw()
+			if (summary == None):
+				None
+			else:
+				temp_transaction_summary.append(summary)
+				summary = None
 		elif(com == 'Transfer' or com == 'transfer'):
-			transfer()
+			summary = transfer()
+			if (summary == None):
+				None
+			else:
+				temp_transaction_summary.append(summary)
+				summary = None
 		elif(com == 'Logout' or com == 'logout'):
 			Loggedin = False
+			print temp_transaction_summary
 		else:
-			None			
-	Running = False
+			None
+	print prompt_finish
+	quit = raw_input()
+	if (quit == 'Quit' or quit == 'quit'):
+		Running = False
+	else:
+		None
