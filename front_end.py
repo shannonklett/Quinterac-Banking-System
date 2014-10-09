@@ -57,6 +57,14 @@ def checkAccountName(name):
 		return True
 	return False #error has occured	
 
+def makeTransactionString(type=00, account1=000000, account2=000000, amount=00000000, name=""):
+	type = str(type).rjust(2, "0")
+	account1 = str(account1).rjust(6, "0")
+	account2 = str(account2).rjust(6, "0")
+	amount = str(amount).rjust(8, "0")
+	name = name.ljust(15)
+	return "%s %s %s %s %s.\n" %(type, account1, account2, amount, name)
+
 def create():
 	if Agent:
 		print prompt_new_account_num
