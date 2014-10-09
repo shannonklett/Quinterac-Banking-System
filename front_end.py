@@ -60,7 +60,7 @@ def makeTransactionString(type=00, account1=000000, account2=000000, amount=0000
 	return "%s %s %s %s %s" %(type, account1, account2, amount, name)	
 
 '''
-INPUT CHECKING METHODS
+INPUT CHECKING FUNCTIONS
 '''
 def checkAccountExists(num):
 	num = str(num).rjust(6, "0")
@@ -210,17 +210,17 @@ MAIN PROGRAM
 while (Running):
 	while (Loggedin == False):
 		print prompt_login
-		log = raw_input()
-		while (log == 'Login' or log == 'login'):
+		log = raw_input().lower()
+		while (log == 'login'):
 			#read in valid accounts file
 			account_list = readAccountFile('Testing/Inputs/accountList_1_2.txt')
 			print prompt_retail_agent
-			user_type = raw_input()
-			if (user_type == 'Agent' or user_type == 'agent'):
+			user_type = raw_input().lower()
+			if (user_type == 'agent'):
 				Loggedin = True
 				Agent = True
 				log = None
-			elif (user_type == 'Retail' or user_type == 'retail'):
+			elif (user_type == 'retail'):
 				Loggedin = True
 				Agent = False
 				log = None
@@ -228,32 +228,32 @@ while (Running):
 				None
 	while (Loggedin == True):
 		print prompt_command
-		com = raw_input()
-		if (com == 'Deposit' or com == 'deposit'):
+		com = raw_input().lower()
+		if (com == 'deposit'):
 			summary = deposit()
 			if (summary != None):
 				temp_transaction_summary.append(summary)
-		elif(com == 'Withdraw' or com == 'withdraw'):
+		elif(com == 'withdraw'):
 			summary = withdraw()
 			if (summary != None):
 				temp_transaction_summary.append(summary)
-		elif(com == 'Transfer' or com == 'transfer'):
+		elif(com == 'transfer'):
 			summary = transfer()
 			if (summary != None):
 				temp_transaction_summary.append(summary)
-		elif(com == 'Create' or com == 'create'):
+		elif(com == 'create'):
 			summary = create()	
 			if (summary != None):
 				temp_transaction_summary.append(summary)
-		elif(com == 'Delete' or com == 'delete'):
+		elif(com == 'delete'):
 			summary = delete()
 			if (summary != None):
 				temp_transaction_summary.append(summary)
-		elif(com == 'Logout' or com == 'logout'):
+		elif(com == 'logout'):
 			Loggedin = False
 			#write Transaction Summary File
 			writeTransactionFile(temp_transaction_summary)
 	print prompt_finish
-	quit = raw_input()
-	if (quit == 'Quit' or quit == 'quit'):
+	quit = raw_input().lower()
+	if (quit == 'quit'):
 		Running = False
