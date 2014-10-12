@@ -41,8 +41,8 @@ temp_transaction_summary = []
 READ/WRITE FILE FUNCTIONS
 '''
 def readAccountFile(filename):
-	lines = [line.strip() for line in open(filename)]
-	return lines
+	accounts = [line.strip() for line in open(filename)]
+	return accounts
 
 def writeTransactionFile(transactions):
 	f=open('Testing/Temp/output.txt', 'w+')
@@ -50,6 +50,7 @@ def writeTransactionFile(transactions):
 		f.write("%s\n" % item)
 	f.write("%s" % makeTransactionString())		
 	f.close()
+	return
 	
 def makeTransactionString(type=00, account1=000000, account2=000000, amount=00000000, name=""):
 	type = str(type).rjust(2, "0")
