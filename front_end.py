@@ -35,15 +35,23 @@ GLOBAL VARIABLES
 Loggedin = False
 Agent = False
 Running = True
-temp_transaction_summary = []
+temp_transaction_summary = [] #list of 41 character strings
+account_list = [] #list of valid accounts numbers (in integer form)
 
 '''
 READ/WRITE FILE FUNCTIONS
 '''
+
+#creates list of valid accounts contained in file	
+#Parameters: (String) filename: the complete name of the file containing the valid accounts list	
+#Return Value: (int List) accounts: list of account numbers contained in the file
 def readAccountFile(filename):
-	accounts = [line.strip() for line in open(filename)]
+	accounts = [int(line.strip()) for line in open(filename)]
 	return accounts
 
+#writes transactions to the file Testing/Temp/output.txt
+#(String List) transactions: list of transaction strings from current session
+#None
 def writeTransactionFile(transactions):
 	f=open('Testing/Temp/output.txt', 'w+')
 	for item in transactions:
@@ -51,7 +59,15 @@ def writeTransactionFile(transactions):
 	f.write("%s" % makeTransactionString())		
 	f.close()
 	return
-	
+
+#creates a 41 character transaction string in the form of "AA BBBBBB CCCCCC DDDDDDDD NNNNNNNNNNNNNNN". 
+#Pads spaces and 0s as needed and uses default values if necessary.
+#Parameters: (int) type: number in range 1-5 indicating transaction type
+#(int) account1: account number of the "to" account
+#(int) account2: account number of the "from" account
+#(int) amount: value in cents of transaction
+#(String) name: account name
+#Return Value: (String) correctly formatted transaction string	
 def makeTransactionString(type=00, account1=000000, account2=000000, amount=00000000, name=""):
 	type = str(type).rjust(2, "0")
 	account1 = str(account1).rjust(6, "0")
@@ -63,10 +79,17 @@ def makeTransactionString(type=00, account1=000000, account2=000000, amount=0000
 '''
 INPUT CHECKING FUNCTIONS
 '''
+#checks if given account number is in the valid accounts list
+#Parameters: (int) num: account number
+#Return Value: (bool) true if  number is in valid accounts file
 def checkAccountExists(num):
-	num = str(num).rjust(6, "0")
 	return num in account_list
 
+#checks user inputted account number to see if it is a 6 or less digit integer greater than 0. 
+#If createMode is true, checks that account doesn't exist, otherwise checks that it does
+#Parameters: (String) num: user inputted account number
+#(bool) createMode: true if function called from create() method
+#Return Value: (bool) true if account number is acceptable
 def checkAccountNum(num, createMode=False):
 	try:
 		num = int(num)
@@ -84,7 +107,10 @@ def checkAccountNum(num, createMode=False):
 	else:
 		return True
 	return False #error occured
-	
+
+#checks user inputted account number to see it is a string with 1-15 characters
+#Parameters: (String) name: user inputted account number
+#Return Value: (bool) true if account name is acceptable
 def checkAccountName(name):
 	if len(name)>15 or len(name)<1:
 		print error_account_nam
@@ -92,6 +118,9 @@ def checkAccountName(name):
 		return True
 	return False #error occured
 
+#checks user inputted amount to ensure it is between 1 and 100000000 for Agent or 1 and 100001 for retail
+#Parameters: (String) amount: user inputted amount
+#Return Value: (bool) true if amount is acceptable
 def checkAmount(val):
 	if Agent:
 		if int(val) > 99999999:
@@ -136,6 +165,7 @@ def delete():
 			print prompt_valid_account_nam
 			account_name = raw_input()
 			if checkAccountName(account_name):
+				account_list.remove(int(account_num)) #prevents further transactions on account
 				return makeTransactionString(5, account_num, name=account_name)	
 	else:	#retail mode
 		print error_permission
