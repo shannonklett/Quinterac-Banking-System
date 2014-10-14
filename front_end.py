@@ -46,17 +46,18 @@ READ/WRITE FILE FUNCTIONS
 #Parameters: (String) filename: the complete name of the file containing the valid accounts list	
 #Return Value: (int List) accounts: list of account numbers contained in the file
 def readAccountFile(filename):
+	#for each line in file, remove newline and convert number to an int
 	accounts = [int(line.strip()) for line in open(filename)]
 	return accounts
 
 #writes transactions to the file Testing/Temp/output.txt
-#(String List) transactions: list of transaction strings from current session
-#None
+#Parameters: (String List) transactions: list of transaction strings from current session
+#Return Value: None
 def writeTransactionFile(transactions):
 	f=open('Testing/Temp/output.txt', 'w+')
 	for item in transactions:
-		f.write("%s\n" % item)
-	f.write("%s" % makeTransactionString())		
+		f.write("%s\n" % item) #write transaction string followed by newline
+	f.write("%s" % makeTransactionString()) #end file with "00 000000 000000 0000000                "	
 	f.close()
 	return
 
@@ -69,10 +70,12 @@ def writeTransactionFile(transactions):
 #(String) name: account name
 #Return Value: (String) correctly formatted transaction string	
 def makeTransactionString(type=00, account1=000000, account2=000000, amount=00000000, name=""):
+	#pad 0s at beginning
 	type = str(type).rjust(2, "0")
 	account1 = str(account1).rjust(6, "0")
 	account2 = str(account2).rjust(6, "0")
 	amount = str(amount).rjust(8, "0")
+	#pad spaces at end
 	name = name.ljust(15)
 	return "%s %s %s %s %s" %(type, account1, account2, amount, name)	
 
@@ -95,15 +98,17 @@ def checkAccountNum(num, createMode=False):
 	try:
 		num = int(num)
 	except ValueError:
-		print error_account_num
+		print error_account_num #must be 1-6 digits
 		return False	
-	if num>999999:
-		print error_account_num
+	if num>999999: 
+		print error_account_num #must be 1-6 digits
 	elif num<1:
-		print error_account_neg
+		print error_account_neg #must be greater than 0
 	elif not createMode and not checkAccountExists(num):
+		#attempting to access account that doesn't exist
 		print error_account_dne		
 	elif createMode and checkAccountExists(num):
+		#creating account that already exists
 		print error_account_exists
 	else:
 		return True
@@ -123,51 +128,64 @@ def checkAccountName(name):
 #Parameters: (String) amount: user inputted amount
 #Return Value: (bool) true if amount is acceptable
 def checkAmount(val):
-	if Agent:
-		if int(val) > 99999999:
-			print error_agent_amount
-			return False
-		elif int(val) < 0:
-			print error_amount_type
-			return False
-		else:
-			return True
-	else:	
-		if int(val) > 100000:
-			print error_retail_amount
-			return False
-		elif int(val) < 0:
-			print error_amount_type
-			return False
-		else:
-			return True	
+	if int(val) < 0:
+		print error_amount_type #must be entered in cents and greater than 0
+		return False
+	if Agent and int(val) > 99999999:
+		print error_agent_amount #transaction above $999,999.99 not accepted
+		return False
+	elif not Agent and int(val) > 100000:
+		print error_retail_amount  #transaction above $1,000.00 not accepted
+		return False
+	#no errors found, return True	
+	return True
 
 '''
 ACCOUNT CHANGING FUNCTIONS
 '''
 
+#checks if user is an agent or retail. If agent, then the user is asked to input a new account number, and new name. 
+#This information will be used by the back-end to create a new account on file. If the user is a retail user, then an error is printed.
+#Parameters: None
+#Return Value: (String) formatted 41 character transaction string
 def create():
 	if Agent:
+		#prompt for new account number
 		print prompt_new_account_num
 		account_num = raw_input()
+		#check if input is valid
 		if checkAccountNum(account_num, True):
+			#prompt for new account name
 			print prompt_new_account_nam
 			account_name = raw_input()
+			#check if input is valid
 			if checkAccountName(account_name):
+				#all inputs have been validated, return transaction string
 				return makeTransactionString(4, account_num, name=account_name)
 	else:	#retail mode
 		print error_permission
 	return None #error occured
-	
+
+#checks if user is an agent or retail. If agent, then the user is asked to input an existing account number, and name. 
+#This information is used to remove account from valid accounts list and later by the back-end to delete an account on file. 
+#If the user is a retail user, then an error is printed.
+#Parameters: None
+#Return Value: (String) formatted 41 character transaction string	
 def delete():
 	if Agent:
+		#prompt for valid account number
 		print prompt_valid_account_num
 		account_num = raw_input()
+		#check if input is valid
 		if checkAccountNum(account_num):
+			#prompt for valid account name
 			print prompt_valid_account_nam
 			account_name = raw_input()
+			#check if input is valid
 			if checkAccountName(account_name):
+				#all inputs have been validated
 				account_list.remove(int(account_num)) #prevents further transactions on account
+				#return transaction string
 				return makeTransactionString(5, account_num, name=account_name)	
 	else:	#retail mode
 		print error_permission
@@ -180,6 +198,8 @@ TRANSACTION FUNCTIONS
 #Deposit is called as result of a user input in the Main loop.
 #Prompts the user to enter the number of the account they wish to interact with,
 #followed by a value to be deposited into the requested account.
+#Parameters: None
+#Return Value: (String) formatted 41 character transaction string
 def deposit():	
 	#Requests the user to input a valid account number to deposit to
 	print prompt_valid_account_num
@@ -212,6 +232,8 @@ def deposit():
 #Withdraw is called as a result of user input in the Main loop.
 #Prompts the user to enter the number of the account they wish to interact with,
 #followed by a value to be withdrawn from the requested account.
+#Parameters: None
+#Return Value: (String) formatted 41 character transaction string
 def withdraw():	
 	#Requests the user to input a valid account number to withdraw from
 	print prompt_valid_account_num
@@ -244,6 +266,8 @@ def withdraw():
 #Transfer is called as a result of user input in the Main loop.
 #Prompts the user to enter the numbers of two accounts they wish to interact with,
 #followed by a value to be transferred between the requested accounts.
+#Parameters: None
+#Return Value: (String) formatted 41 character transaction string
 def transfer():	
 	#Requests the user to input a valid account number to transfer from
 	print prompt_transfer_from
