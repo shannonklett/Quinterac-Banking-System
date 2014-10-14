@@ -356,7 +356,7 @@ while (Running):
 				loginInput = None
 	#user is now logged in			
 	
-	#read in valid accounts file and turns it into a list for use by program
+	#read in a valid accounts file and turns it into a list for use by program
 	account_list = readAccountFile('Testing/Inputs/accountList_1_2.txt')
 						
 	#The second loop 
@@ -394,7 +394,7 @@ while (Running):
 		#If the user uses this input, than the Loggedin loop is broken.
 		elif(commandInput == 'logout'):
 			Loggedin = False
-			#write to the Transaction Summary File
+			#write to the Transaction Summary File (Testing/Temp/output.txt)
 			writeTransactionFile(temp_transaction_summary)
 	#After logging out, the users is asked if they want to terminate the program
 	#Again, this is a temporary feature, and is not intended to be included
