@@ -79,6 +79,7 @@ def makeTransactionString(type=00, account1=000000, account2=000000, amount=0000
 '''
 INPUT CHECKING FUNCTIONS
 '''
+
 #checks if given account number is in the valid accounts list
 #Parameters: (int) num: account number
 #Return Value: (bool) true if  number is in valid accounts file
@@ -144,6 +145,7 @@ def checkAmount(val):
 '''
 ACCOUNT CHANGING FUNCTIONS
 '''
+
 def create():
 	if Agent:
 		print prompt_new_account_num
@@ -175,11 +177,9 @@ def delete():
 TRANSACTION FUNCTIONS
 '''
 
-
 #Deposit is called as result of a user input in the Main loop.
 #Prompts the user to enter the number of the account they wish to interact with,
 #followed by a value to be deposited into the requested account.
-
 def deposit():	
 	#Requests the user to input a valid account number to deposit to
 	print prompt_valid_account_num
@@ -187,7 +187,7 @@ def deposit():
 	#Passes the input account number to a function which checks its validity
 	if (checkAccountNum(account_num) == False):
 		return None
-	#Requests the user for an amount to deposit
+	#Prompts the user for an amount to deposit
 	print prompt_deposit
 	deposit_val = raw_input()
 	#Checks that the value was an intager
@@ -197,7 +197,7 @@ def deposit():
 	except ValueError:
 		print error_amount_type
 		return None
-	#Passes the trasfer value is passed to a function which checks its validity
+	#Passes the deposit value to a function which checks its validity
 	#Specifically checking if it is within the range allowable for Agent/Retail
 	if(checkAmount(deposit_val)):
 		print "Deposit Successful"
@@ -209,11 +209,9 @@ def deposit():
 		return None
 	return None
 
-
 #Withdraw is called as a result of user input in the Main loop.
 #Prompts the user to enter the number of the account they wish to interact with,
 #followed by a value to be withdrawn from the requested account.
-
 def withdraw():	
 	#Requests the user to input a valid account number to withdraw from
 	print prompt_valid_account_num
@@ -243,11 +241,9 @@ def withdraw():
 		return None
 	return None
 
-
 #Transfer is called as a result of user input in the Main loop.
 #Prompts the user to enter the numbers of two accounts they wish to interact with,
 #followed by a value to be transferred between the requested accounts.
-
 def transfer():	
 	#Requests the user to input a valid account number to transfer from
 	print prompt_transfer_from
@@ -289,12 +285,12 @@ MAIN PROGRAM
 
 #Main begins by reading and saving a copy of the accounts list
 #when the program is initiated.
-#It then enters a loop which requests the user to input ‘Login’ to begin.
+#It then enters a loop which requests the user to input "Login" to begin.
 #When the user has done so, it then requests if the user is in agent or retail mode.
-#Once determined, main enters it’s second loop,
+#Once determined, main enters its second loop,
 #which prompts the user for valid operations.
 #The operations are named for the Account changing, Transaction, and logout functions.
-#Entering the proper input, such as ‘create’ will call that function.
+#Entering the proper input, such as "create" will call that function.
 #Logout is not actually calling a function however,
 #as logging out is simply breaking the loop condition.
 #Upon return from a function, Main will take the transaction string
@@ -307,7 +303,6 @@ MAIN PROGRAM
 #This was implemented for manual testing during development,
 #and will not be implemented in the final product.
 
-
 #Running is the first loop condition, this was implemented to allow users to
 #log back in without having to rerun the program each time. This has been implemented
 #for manual testing of code during development and will not be featured
@@ -319,10 +314,8 @@ while (Running):
 	while (Loggedin == False):
 		#Informs the user what they need to do to login
 		print prompt_login
-		log = raw_input().lower()
-		while (log == 'login'):
-			#read in valid accounts file and turns it into a list for use by program
-			account_list = readAccountFile('Testing/Inputs/accountList_1_2.txt')
+		loginInput = raw_input().lower()
+		while (loginInput == 'login'):
 			#Requests what kind of account the user will use
 			#Agent, or Retail?
 			print prompt_retail_agent
@@ -332,55 +325,57 @@ while (Running):
 			if (user_type == 'agent'):
 				Loggedin = True
 				Agent = True
-				log = None
+				loginInput = None
 			elif (user_type == 'retail'):
 				Loggedin = True
 				Agent = False
-				log = None
-			else:
-				None
-	#This second loop is initiated when the user successful
-	#completes the login process
+				loginInput = None
+	#user is now logged in			
+	
+	#read in valid accounts file and turns it into a list for use by program
+	account_list = readAccountFile('Testing/Inputs/accountList_1_2.txt')
+						
+	#The second loop 
 	while (Loggedin == True):
 		#Asks the user for a valid command
 		print prompt_command
-		com = raw_input().lower()
+		commandInput = raw_input().lower()
 		#If statement reads the users input and calls the appropriate
 		#Function if possible.
-		if (com == 'deposit'):
+		if (commandInput == 'deposit'):
 			#Takes the String returned by deposit() and stores it in summary
 			summary = deposit()
 			#If deposit() was succesful, than the transaction summary string
-			#will be stored in a temporary list of the days transactions.
+			#will be stored in a temporary list of the day's transactions.
 			if (summary != None):
 				temp_transaction_summary.append(summary)
-		#elif statements are functionally equivalent to if (com == 'deposit')
-		elif(com == 'withdraw'):
+		#elif statements are functionally equivalent to if (commandInput == 'deposit')
+		elif(commandInput == 'withdraw'):
 			summary = withdraw()
 			if (summary != None):
 				temp_transaction_summary.append(summary)
-		elif(com == 'transfer'):
+		elif(commandInput == 'transfer'):
 			summary = transfer()
 			if (summary != None):
 				temp_transaction_summary.append(summary)
-		elif(com == 'create'):
+		elif(commandInput == 'create'):
 			summary = create()	
 			if (summary != None):
 				temp_transaction_summary.append(summary)
-		elif(com == 'delete'):
+		elif(commandInput == 'delete'):
 			summary = delete()
 			if (summary != None):
 				temp_transaction_summary.append(summary)
 		#Logout is an additional input accepted.
 		#If the user uses this input, than the Loggedin loop is broken.
-		elif(com == 'logout'):
+		elif(commandInput == 'logout'):
 			Loggedin = False
-			#write Transaction Summary File
+			#write to the Transaction Summary File
 			writeTransactionFile(temp_transaction_summary)
-	print prompt_finish
-	quit = raw_input().lower()
 	#After logging out, the users is asked if they want to terminate the program
 	#Again, this is a temporary feature, and is not intended to be included
-	#in the final iteration of this project.
+	#in the final iteration of this project.		
+	print prompt_finish
+	quit = raw_input().lower()
 	if (quit == 'quit'):
 		Running = False
