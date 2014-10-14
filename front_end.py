@@ -128,6 +128,13 @@ def checkAccountName(name):
 #Parameters: (String) amount: user inputted amount
 #Return Value: (bool) true if amount is acceptable
 def checkAmount(val):
+	#Checks that the value was an intager
+	try:
+		int(val)
+	#Rejects non-numerical, negative and decimal numbers
+	except ValueError:
+		print error_amount_type
+		return None
 	if int(val) < 0:
 		print error_amount_type #must be entered in cents and greater than 0
 		return False
@@ -210,13 +217,6 @@ def deposit():
 	#Prompts the user for an amount to deposit
 	print prompt_deposit
 	deposit_val = raw_input()
-	#Checks that the value was an intager
-	try:
-		int(deposit_val)
-	#Rejects non-numerical, negative and decimal numbers
-	except ValueError:
-		print error_amount_type
-		return None
 	#Passes the deposit value to a function which checks its validity
 	#Specifically checking if it is within the range allowable for Agent/Retail
 	if(checkAmount(deposit_val)):
@@ -244,13 +244,6 @@ def withdraw():
 	#Requests the user for an amount to withdraw
 	print prompt_withdraw
 	withdraw_val = raw_input()
-	#Checks that the value was an intager
-	try:
-		int(withdraw_val)
-	#Rejects non-numerical, negative and decimal numbers
-	except ValueError:
-		print error_amount_type
-		return None
 	#Passes the trasfer value is passed to a function which checks its validity
 	#Specifically checking if it is within the range allowable for Agent/Retail
 	if (checkAmount(withdraw_val)):
@@ -284,13 +277,6 @@ def transfer():
 	#Requests the user for an amount to transfer
 	print prompt_transfer
 	transfer_val = raw_input()
-	#Checks that the value was an intager
-	try:
-		int(transfer_val)
-	#Rejects non-numerical, negative and decimal numbers
-	except ValueError:
-		print error_amount_type
-		return None
 	#Passes the trasfer value is passed to a function which checks its validity
 	#Specifically checking if it is within the range allowable for Agent/Retail
 	if (checkAmount(transfer_val)):
