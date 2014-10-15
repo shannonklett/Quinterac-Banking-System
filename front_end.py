@@ -128,7 +128,7 @@ def check_account_name(name):
 #Parameters: (String) amount: user inputted amount
 #Return Value: (bool) true if amount is acceptable
 def check_amount(val):
-	#Checks that the value was an intager
+	#Checks that the value was an integer
 	try:
 		int(val)
 	#Rejects non-numerical, negative and decimal numbers
