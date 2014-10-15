@@ -32,9 +32,9 @@ error_transfer_same ="Error: Cannot transfer to the same account."
 '''
 GLOBAL VARIABLES
 '''
-Loggedin = False
-Agent = False
-Running = True
+logged_in = False
+agent = False
+running = True
 temp_transaction_summary = [] #list of 41 character strings
 account_list = [] #list of valid accounts numbers (in integer form)
 
@@ -45,7 +45,7 @@ READ/WRITE FILE FUNCTIONS
 #creates list of valid accounts contained in file	
 #Parameters: (String) filename: the complete name of the file containing the valid accounts list	
 #Return Value: (int List) accounts: list of account numbers contained in the file
-def readAccountFile(filename):
+def read_account_file(filename):
 	#for each line in file, remove newline and convert number to an int
 	accounts = [int(line.strip()) for line in open(filename)]
 	return accounts
@@ -53,11 +53,11 @@ def readAccountFile(filename):
 #writes transactions to the file Testing/Temp/output.txt
 #Parameters: (String List) transactions: list of transaction strings from current session
 #Return Value: None
-def writeTransactionFile(transactions):
+def write_transaction_file(transactions):
 	f=open('Testing/Temp/output.txt', 'w+')
 	for item in transactions:
 		f.write("%s\n" % item) #write transaction string followed by newline
-	f.write("%s" % makeTransactionString()) #end file with "00 000000 000000 0000000                "	
+	f.write("%s" % make_transaction_string()) #end file with "00 000000 000000 0000000                "	
 	f.close()
 	return
 
@@ -69,7 +69,7 @@ def writeTransactionFile(transactions):
 #(int) amount: value in cents of transaction
 #(String) name: account name
 #Return Value: (String) correctly formatted transaction string	
-def makeTransactionString(type=00, account1=000000, account2=000000, amount=00000000, name=""):
+def make_transaction_string(type=00, account1=000000, account2=000000, amount=00000000, name=""):
 	#pad 0s at beginning
 	type = str(type).rjust(2, "0")
 	account1 = str(account1).rjust(6, "0")
@@ -86,7 +86,7 @@ INPUT CHECKING FUNCTIONS
 #checks if given account number is in the valid accounts list
 #Parameters: (int) num: account number
 #Return Value: (bool) true if  number is in valid accounts file
-def checkAccountExists(num):
+def check_account_exists(num):
 	return num in account_list
 
 #checks user inputted account number to see if it is a 6 or less digit integer greater than 0. 
@@ -94,7 +94,7 @@ def checkAccountExists(num):
 #Parameters: (String) num: user inputted account number
 #(bool) createMode: true if function called from create() method
 #Return Value: (bool) true if account number is acceptable
-def checkAccountNum(num, createMode=False):
+def check_account_num(num, create_mode=False):
 	try:
 		num = int(num)
 	except ValueError:
@@ -104,10 +104,10 @@ def checkAccountNum(num, createMode=False):
 		print error_account_num #must be 1-6 digits
 	elif num<1:
 		print error_account_neg #must be greater than 0
-	elif not createMode and not checkAccountExists(num):
+	elif not create_mode and not check_account_exists(num):
 		#attempting to access account that doesn't exist
 		print error_account_dne		
-	elif createMode and checkAccountExists(num):
+	elif create_mode and check_account_exists(num):
 		#creating account that already exists
 		print error_account_exists
 	else:
@@ -117,17 +117,17 @@ def checkAccountNum(num, createMode=False):
 #checks user inputted account number to see it is a string with 1-15 characters
 #Parameters: (String) name: user inputted account number
 #Return Value: (bool) true if account name is acceptable
-def checkAccountName(name):
+def check_account_name(name):
 	if len(name)>15 or len(name)<1:
 		print error_account_nam
 	else:
 		return True
 	return False #error occured
 
-#checks user inputted amount to ensure it is between 1 and 100000000 for Agent or 1 and 100001 for retail
+#checks user inputted amount to ensure it is an integer between 1 and 100000000 for agent or 1 and 100001 for retail
 #Parameters: (String) amount: user inputted amount
 #Return Value: (bool) true if amount is acceptable
-def checkAmount(val):
+def check_amount(val):
 	#Checks that the value was an intager
 	try:
 		int(val)
@@ -138,10 +138,10 @@ def checkAmount(val):
 	if int(val) < 0:
 		print error_amount_type #must be entered in cents and greater than 0
 		return False
-	if Agent and int(val) > 99999999:
+	if agent and int(val) > 99999999:
 		print error_agent_amount #transaction above $999,999.99 not accepted
 		return False
-	elif not Agent and int(val) > 100000:
+	elif not agent and int(val) > 100000:
 		print error_retail_amount  #transaction above $1,000.00 not accepted
 		return False
 	#no errors found, return True	
@@ -156,19 +156,19 @@ ACCOUNT CHANGING FUNCTIONS
 #Parameters: None
 #Return Value: (String) formatted 41 character transaction string
 def create():
-	if Agent:
+	if agent:
 		#prompt for new account number
 		print prompt_new_account_num
 		account_num = raw_input()
 		#check if input is valid
-		if checkAccountNum(account_num, True):
+		if check_account_num(account_num, True):
 			#prompt for new account name
 			print prompt_new_account_nam
 			account_name = raw_input()
 			#check if input is valid
-			if checkAccountName(account_name):
+			if check_account_name(account_name):
 				#all inputs have been validated, return transaction string
-				return makeTransactionString(4, account_num, name=account_name)
+				return make_transaction_string(4, account_num, name=account_name)
 	else:	#retail mode
 		print error_permission
 	return None #error occured
@@ -179,21 +179,21 @@ def create():
 #Parameters: None
 #Return Value: (String) formatted 41 character transaction string	
 def delete():
-	if Agent:
+	if agent:
 		#prompt for valid account number
 		print prompt_valid_account_num
 		account_num = raw_input()
 		#check if input is valid
-		if checkAccountNum(account_num):
+		if check_account_num(account_num):
 			#prompt for valid account name
 			print prompt_valid_account_nam
 			account_name = raw_input()
 			#check if input is valid
-			if checkAccountName(account_name):
+			if check_account_name(account_name):
 				#all inputs have been validated
 				account_list.remove(int(account_num)) #prevents further transactions on account
 				#return transaction string
-				return makeTransactionString(5, account_num, name=account_name)	
+				return make_transaction_string(5, account_num, name=account_name)	
 	else:	#retail mode
 		print error_permission
 	return None #error occured	
@@ -212,19 +212,19 @@ def deposit():
 	print prompt_valid_account_num
 	account_num = raw_input()
 	#Passes the input account number to a function which checks its validity
-	if (checkAccountNum(account_num) == False):
+	if (check_account_num(account_num) == False):
 		return None
 	#Prompts the user for an amount to deposit
 	print prompt_deposit
 	deposit_val = raw_input()
 	#Passes the deposit value to a function which checks its validity
 	#Specifically checking if it is within the range allowable for Agent/Retail
-	if(checkAmount(deposit_val)):
+	if(check_amount(deposit_val)):
 		print "Deposit Successful"
 		#Returns a string in the format of
 		#CC_AAAAAA_BBBBBB_MMMMMMMM_NNNNNNNNNNNNNNN
-		#By calling makeTransactionString and passing appropriate parameters
-		return makeTransactionString(1, account_num, amount = deposit_val)
+		#By calling make_transaction_string and passing appropriate parameters
+		return make_transaction_string(1, account_num, amount = deposit_val)
 	else:
 		return None
 	return None
@@ -239,19 +239,19 @@ def withdraw():
 	print prompt_valid_account_num
 	account_num = raw_input()
 	#Passes the input account number to a function which checks its validity
-	if (checkAccountNum(account_num) == False):
+	if (check_account_num(account_num) == False):
 		return None
 	#Requests the user for an amount to withdraw
 	print prompt_withdraw
 	withdraw_val = raw_input()
 	#Passes the trasfer value is passed to a function which checks its validity
 	#Specifically checking if it is within the range allowable for Agent/Retail
-	if (checkAmount(withdraw_val)):
+	if (check_amount(withdraw_val)):
 		print "Withdraw Successful"
 		#Returns a string in the format of
 		#CC_AAAAAA_BBBBBB_MMMMMMMM_NNNNNNNNNNNNNNN
-		#By calling makeTransactionString and passing appropriate parameters
-		return makeTransactionString(2, account2 = account_num, amount = withdraw_val)
+		#By calling make_transaction_string and passing appropriate parameters
+		return make_transaction_string(2, account2 = account_num, amount = withdraw_val)
 	else:
 		return None
 	return None
@@ -266,25 +266,25 @@ def transfer():
 	print prompt_transfer_from
 	account_num_from = raw_input()
 	#Passes the input account number to a function which checks its validity
-	if (checkAccountNum(account_num_from) == False):
+	if (check_account_num(account_num_from) == False):
 		return None
 	#Requests the user to input a valid account number to transfer to
 	print prompt_transfer_to
 	account_num_to = raw_input()
 	#Passes the input account number to a function which checks its validity
-	if (checkAccountNum(account_num_to) == False):
+	if (check_account_num(account_num_to) == False):
 		return None
 	#Requests the user for an amount to transfer
 	print prompt_transfer
 	transfer_val = raw_input()
 	#Passes the trasfer value is passed to a function which checks its validity
 	#Specifically checking if it is within the range allowable for Agent/Retail
-	if (checkAmount(transfer_val)):
+	if (check_amount(transfer_val)):
 		print "Transfer Successful"
 		#Returns a string in the format of
 		#CC_AAAAAA_BBBBBB_MMMMMMMM_NNNNNNNNNNNNNNN
-		#By calling makeTransactionString and passing appropriate parameters
-		return makeTransactionString(3, account_num_to, account_num_from, transfer_val)
+		#By calling make_transaction_string and passing appropriate parameters
+		return make_transaction_string(3, account_num_to, account_num_from, transfer_val)
 	else:
 		return None
 	return None
@@ -313,19 +313,19 @@ MAIN PROGRAM
 #This was implemented for manual testing during development,
 #and will not be implemented in the final product.
 
-#Running is the first loop condition, this was implemented to allow users to
+#running is the first loop condition, this was implemented to allow users to
 #log back in without having to rerun the program each time. This has been implemented
 #for manual testing of code during development and will not be featured
 #in the final product.
-while (Running):
-	#Loggedin is parameter for Main's first major loop.
+while (running):
+	#logged_in is parameter for Main's first major loop.
 	#It checks if the user is actually succeded in logging in or not
 	#and by extension, what kind of inputs are currently accepted
-	while (Loggedin == False):
+	while (logged_in == False):
 		#Informs the user what they need to do to login
 		print prompt_login
-		loginInput = raw_input().lower()
-		while (loginInput == 'login'):
+		login_input = raw_input().lower()
+		while (login_input == 'login'):
 			#Requests what kind of account the user will use
 			#Agent, or Retail?
 			print prompt_retail_agent
@@ -333,59 +333,59 @@ while (Running):
 			#if statement reads the user response, and sets Global variables
 			#which are used to determine what commands the user can use later.
 			if (user_type == 'agent'):
-				Loggedin = True
-				Agent = True
-				loginInput = None
+				logged_in = True
+				agent = True
+				login_input = None
 			elif (user_type == 'retail'):
-				Loggedin = True
-				Agent = False
-				loginInput = None
+				logged_in = True
+				agent = False
+				login_input = None
 	#user is now logged in			
 	
 	#read in a valid accounts file and turns it into a list for use by program
-	account_list = readAccountFile('Testing/Inputs/accountList_1_2.txt')
+	account_list = read_account_file('Testing/Inputs/accountList_1_2.txt')
 						
 	#The second loop 
-	while (Loggedin == True):
+	while (logged_in == True):
 		#Asks the user for a valid command
 		print prompt_command
-		commandInput = raw_input().lower()
+		command_input = raw_input().lower()
 		#If statement reads the users input and calls the appropriate
 		#Function if possible.
-		if (commandInput == 'deposit'):
+		if (command_input == 'deposit'):
 			#Takes the String returned by deposit() and stores it in summary
 			summary = deposit()
 			#If deposit() was succesful, than the transaction summary string
 			#will be stored in a temporary list of the day's transactions.
 			if (summary != None):
 				temp_transaction_summary.append(summary)
-		#elif statements are functionally equivalent to if (commandInput == 'deposit')
-		elif(commandInput == 'withdraw'):
+		#elif statements are functionally equivalent to if (command_input == 'deposit')
+		elif(command_input == 'withdraw'):
 			summary = withdraw()
 			if (summary != None):
 				temp_transaction_summary.append(summary)
-		elif(commandInput == 'transfer'):
+		elif(command_input == 'transfer'):
 			summary = transfer()
 			if (summary != None):
 				temp_transaction_summary.append(summary)
-		elif(commandInput == 'create'):
+		elif(command_input == 'create'):
 			summary = create()	
 			if (summary != None):
 				temp_transaction_summary.append(summary)
-		elif(commandInput == 'delete'):
+		elif(command_input == 'delete'):
 			summary = delete()
 			if (summary != None):
 				temp_transaction_summary.append(summary)
 		#Logout is an additional input accepted.
-		#If the user uses this input, than the Loggedin loop is broken.
-		elif(commandInput == 'logout'):
-			Loggedin = False
+		#If the user uses this input, than the logged_in loop is broken.
+		elif(command_input == 'logout'):
+			logged_in = False
 			#write to the Transaction Summary File (Testing/Temp/output.txt)
-			writeTransactionFile(temp_transaction_summary)
+			write_transaction_file(temp_transaction_summary)
 	#After logging out, the users is asked if they want to terminate the program
 	#Again, this is a temporary feature, and is not intended to be included
 	#in the final iteration of this project.		
 	print prompt_finish
 	quit = raw_input().lower()
 	if (quit == 'quit'):
-		Running = False
+		running = False
