@@ -1,3 +1,5 @@
+import sys
+
 '''
 GLOBAL PROMPTS
 '''
@@ -53,8 +55,8 @@ def read_account_file(filename):
 #writes transactions to the file Testing/Temp/output.txt
 #Parameters: (String List) transactions: list of transaction strings from current session
 #Return Value: None
-def write_transaction_file(transactions):
-	f=open('Testing/Temp/output.txt', 'w+')
+def write_transaction_file(transactions, filename):
+	f=open(filename, 'w+')
 	for item in transactions:
 		f.write("%s\n" % item) #write transaction string followed by newline
 	f.write("%s" % make_transaction_string()) #end file with "00 000000 000000 0000000                "	
@@ -293,6 +295,14 @@ def transfer():
 MAIN PROGRAM
 '''
 
+#read in command line arguments
+if len(sys.argv) != 3:
+	running = False
+	print "Error: Program takes 2 arguments."
+else:
+	inputFile = sys.argv[1]
+	outputFile = sys.argv[2]
+	
 #Main begins by reading and saving a copy of the accounts list
 #when the program is initiated.
 #It then enters a loop which requests the user to input "Login" to begin.
@@ -317,6 +327,7 @@ MAIN PROGRAM
 #log back in without having to rerun the program each time. This has been implemented
 #for manual testing of code during development and will not be featured
 #in the final product.
+
 while (running):
 	#logged_in is parameter for Main's first major loop.
 	#It checks if the user is actually succeded in logging in or not
@@ -343,7 +354,7 @@ while (running):
 	#user is now logged in			
 	
 	#read in a valid accounts file and turns it into a list for use by program
-	account_list = read_account_file('Testing/Inputs/accountList_1_2.txt')
+	account_list = read_account_file(inputFile)
 						
 	#The second loop 
 	while (logged_in == True):
@@ -380,8 +391,8 @@ while (running):
 		#If the user uses this input, than the logged_in loop is broken.
 		elif(command_input == 'logout'):
 			logged_in = False
-			#write to the Transaction Summary File (Testing/Temp/output.txt)
-			write_transaction_file(temp_transaction_summary)
+			#write to the Transaction Summary File
+			write_transaction_file(temp_transaction_summary, outputFile)
 	#After logging out, the users is asked if they want to terminate the program
 	#Again, this is a temporary feature, and is not intended to be included
 	#in the final iteration of this project.		
