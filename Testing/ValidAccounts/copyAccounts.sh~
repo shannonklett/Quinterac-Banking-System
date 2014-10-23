@@ -1,0 +1,45 @@
+for FILE in a
+do
+	cp accountList_1_123456.txt $FILE
+done
+
+for FILE in rp_dp_cor.txt
+do
+	cp accountList_123456_223456.txt $FILE
+done
+
+for FILE in rp_dp_cor.txt
+do
+	cp accountList_123456.txt $FILE
+done
+
+for FILE in rp_tr_cor.txt
+rp_tr_oos.txt
+rp_tr_zer.txt
+rp_tr_dec.txt
+rp_tr_neg.txt
+rp_tr_str.txt
+do
+	cp accountList_1_2.txt $FILE
+done
+
+for FILE in rp_dp_cor.txt rp_dp_oos.txt rp_dp_zer.txt rp_dp_neg.txt rp_wd_cor.txt
+rp_wd_oos.txt
+rp_wd_zer.txt
+rp_wd_neg.txt
+rp_tr_ivt.txt rp_dp_dec.txt
+rp_wd_dec.txt
+rp_dp_str.txt
+rp_wd_str.txt
+
+do
+	cp accountList_1.txt $FILE
+done
+
+for FILE in rp_cr.txt rp_dt.txt rp_dp_inv.txt rp_dp_out.txt rp_wd_inv.txt
+rp_wd_out.txt rp_tr_ivf.txt rp_tr_out.txt
+
+do
+	cp accountList_empty.txt $FILE
+done
+
