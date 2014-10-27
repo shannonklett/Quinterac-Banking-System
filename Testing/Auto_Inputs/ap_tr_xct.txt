@@ -1,0 +1,7 @@
+login
+agent
+transfer
+123456
+223456
+99999999
+logout

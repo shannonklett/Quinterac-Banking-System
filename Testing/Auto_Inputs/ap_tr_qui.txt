@@ -1,0 +1,4 @@
+login
+agent
+transfer
+quit

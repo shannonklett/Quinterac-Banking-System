@@ -1,0 +1,5 @@
+login
+retail
+deposit
+000001
+logout

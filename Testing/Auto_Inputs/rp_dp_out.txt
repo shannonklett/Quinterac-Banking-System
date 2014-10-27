@@ -1,0 +1,4 @@
+login
+retail
+deposit
+logout

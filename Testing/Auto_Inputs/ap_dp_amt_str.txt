@@ -1,0 +1,6 @@
+login
+agent
+deposit
+1
+$1
+logout

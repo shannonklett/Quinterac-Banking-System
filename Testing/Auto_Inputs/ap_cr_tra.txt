@@ -1,0 +1,10 @@
+login
+agent
+create
+123456
+fifteen_digits_
+transfer
+123456
+000001
+100000
+logout

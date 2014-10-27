@@ -1,0 +1,9 @@
+login
+agent
+delete
+123456
+fifteen_digits_
+withdraw
+123456
+100000
+logout

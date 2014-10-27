@@ -1,0 +1,4 @@
+login
+agent
+delete
+quit

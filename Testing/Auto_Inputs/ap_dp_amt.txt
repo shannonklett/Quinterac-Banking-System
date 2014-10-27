@@ -1,0 +1,6 @@
+login
+agent
+deposit
+1
+99999999
+quit

@@ -1,0 +1,7 @@
+login
+retail
+transfer
+000001
+000002
+1.0
+logout

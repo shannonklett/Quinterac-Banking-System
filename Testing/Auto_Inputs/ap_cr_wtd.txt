@@ -1,0 +1,8 @@
+login
+agent
+create
+123456
+fifteen_digits_
+withdraw
+100000
+logout
