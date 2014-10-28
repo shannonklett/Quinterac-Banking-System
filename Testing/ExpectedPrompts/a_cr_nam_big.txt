@@ -3,4 +3,5 @@ Are you 'retail' or 'agent'?
 Enter a valid command:
 Enter a new account number:
 Enter a new account name:
+Error: Account names must be 1-15 characters.
 Enter a valid command:
