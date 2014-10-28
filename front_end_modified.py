@@ -137,7 +137,7 @@ def check_amount(val):
 	except ValueError:
 		print error_amount_type
 		return None
-	if int(val) < 0:
+	if int(val) < 1:
 		print error_amount_type #must be entered in cents and greater than 0
 		return False
 	if agent and int(val) > 99999999:
@@ -389,7 +389,7 @@ while (running):
 		#Logout is an additional input accepted.
 		#If the user uses this input, than the logged_in loop is broken.
 		elif(command_input == 'logout'):
-			logged_in = False
 			#write to the Transaction Summary File
 			write_transaction_file(temp_transaction_summary, output_file)
+			logged_in = False
 			running = False
