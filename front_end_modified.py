@@ -222,7 +222,6 @@ def deposit():
 	#Passes the deposit value to a function which checks its validity
 	#Specifically checking if it is within the range allowable for Agent/Retail
 	if(check_amount(deposit_val)):
-		print "Deposit Successful"
 		#Returns a string in the format of
 		#CC_AAAAAA_BBBBBB_MMMMMMMM_NNNNNNNNNNNNNNN
 		#By calling make_transaction_string and passing appropriate parameters
@@ -249,7 +248,6 @@ def withdraw():
 	#Passes the trasfer value is passed to a function which checks its validity
 	#Specifically checking if it is within the range allowable for Agent/Retail
 	if (check_amount(withdraw_val)):
-		print "Withdraw Successful"
 		#Returns a string in the format of
 		#CC_AAAAAA_BBBBBB_MMMMMMMM_NNNNNNNNNNNNNNN
 		#By calling make_transaction_string and passing appropriate parameters
@@ -276,13 +274,15 @@ def transfer():
 	#Passes the input account number to a function which checks its validity
 	if (check_account_num(account_num_to) == False):
 		return None
+	if (account_num_from == account_num_to)
+		print error_transfer_same
+		return None
 	#Requests the user for an amount to transfer
 	print prompt_transfer
 	transfer_val = raw_input()
 	#Passes the trasfer value is passed to a function which checks its validity
 	#Specifically checking if it is within the range allowable for Agent/Retail
 	if (check_amount(transfer_val)):
-		print "Transfer Successful"
 		#Returns a string in the format of
 		#CC_AAAAAA_BBBBBB_MMMMMMMM_NNNNNNNNNNNNNNN
 		#By calling make_transaction_string and passing appropriate parameters
