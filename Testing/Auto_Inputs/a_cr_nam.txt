@@ -3,4 +3,5 @@ agent
 create
 1
 abc
-quit
+logout
+
