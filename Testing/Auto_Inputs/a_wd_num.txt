@@ -1,5 +1,0 @@
-login
-agent
-withdraw
-1
-quit

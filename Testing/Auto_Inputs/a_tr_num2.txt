@@ -1,6 +1,0 @@
-login
-agent
-transfer
-1
-2
-quit
