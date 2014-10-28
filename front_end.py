@@ -392,10 +392,7 @@ while (running):
 			logged_in = False
 			#write to the Transaction Summary File
 			write_transaction_file(temp_transaction_summary, output_file)
+			running = False
 	#After logging out, the users is asked if they want to terminate the program
 	#Again, this is a temporary feature, and is not intended to be included
-	#in the final iteration of this project.		
-	print prompt_finish
-	quit = raw_input().lower()
-	if (quit == 'quit'):
-		running = False
+	#in the final iteration of this project.
