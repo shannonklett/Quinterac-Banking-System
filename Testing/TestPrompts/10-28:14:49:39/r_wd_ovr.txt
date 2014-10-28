@@ -1,0 +1,11 @@
+Enter 'login' to begin:
+Are you 'retail' or 'agent'?
+Enter a valid command:
+Enter a valid account number:
+Enter withdraw amount:
+Withdraw Successful
+Enter a valid command:
+Enter a valid account number:
+Enter withdraw amount:
+Withdraw Successful
+Enter a valid command:

@@ -1,12 +1,14 @@
+DATE=$(date +'%m-%d:%H:%M:%S')
+mkdir TestOutputs/$DATE
+mkdir TestPrompts/$DATE
+
 while read test; do
-	echo "running test $test"
-	DATE=$(date +'%m-%d:%H:%M')
-	echo $DATE
-	python ../front_end.py ValidAccounts/$test TestOutputs/$DATE/$test < Auto_Inputs/$test > TestPrompts/$DATE/$test
+	printf "running test $test\n\n"
+	python ../front_end_modified.py ValidAccounts/$test TestOutputs/$DATE/$test < Auto_Inputs/$test > TestPrompts/$DATE/$test
 	
-	echo "\nchecking output of test $test"
-	diff TestOutputs/$DATE/$test ExpectedOutputs/$test
-	diff TestPrompts/$DATE/$test ExpectedPrompts/$test
-done <inputFiles.txt
+	printf "\nchecking output of test $test\n"
+	diff -b TestOutputs/$DATE/$test ExpectedOutputs/$test
+	diff -b TestPrompts/$DATE/$test ExpectedPrompts/$test
+done <inputFiles1.txt
 
 

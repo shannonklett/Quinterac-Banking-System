@@ -1,0 +1,784 @@
+running test general_no_login.txt
+
+checking output of test general_no_login.txt
+1,7c1,7
+< Enter 'login' to begin:
+< Enter 'login' to begin:
+< Enter 'login' to begin:
+< Enter 'login' to begin:
+< Enter 'login' to begin:
+< Enter 'login' to begin:
+< Enter 'login' to begin:
+---
+> Enter ‘login’ to begin:
+> Enter ‘login’ to begin:
+> Enter ‘login’ to begin:
+> Enter ‘login’ to begin:
+> Enter ‘login’ to begin:
+> Enter ‘login’ to begin:
+> Enter ‘login’ to begin:
+running test general_double_login.txt
+
+checking output of test general_double_login.txt
+1,2c1
+< Enter 'login' to begin:
+< Are you 'retail' or 'agent'?
+---
+> Enter ‘login’ to begin:
+running test a_lo_cor.txt
+
+checking output of test a_lo_cor.txt
+running test general_login_while_logged_in.txt
+
+checking output of test general_login_while_logged_in.txt
+1c1
+< Enter 'login' to begin:
+---
+> Enter ‘login’ to begin:
+running test general_login_while_logged_in.txt
+
+checking output of test general_login_while_logged_in.txt
+1c1
+< Enter 'login' to begin:
+---
+> Enter ‘login’ to begin:
+running test r_cr.txt
+
+checking output of test r_cr.txt
+1,2c1,2
+< Enter 'login' to begin:
+< Are you 'retail' or 'agent'?
+---
+> Enter ‘login’ to begin:
+> Are you ‘retail’ or ‘agent’:
+4c4
+< Error: You do not have permission to do that.
+---
+> Error: You do not have permission to do that
+running test a_cr_num_xct.txt
+
+checking output of test a_cr_num_xct.txt
+running test a_cr_num_sml.txt
+
+checking output of test a_cr_num_sml.txt
+running test a_cr_num_big.txt
+
+checking output of test a_cr_num_big.txt
+running test a_cr_num_str.txt
+
+checking output of test a_cr_num_str.txt
+running test a_cr_num_neg.txt
+
+checking output of test a_cr_num_neg.txt
+5c5
+< Error: Account number must be greater than 0.
+---
+> Error: Account numbers must be 1-6 digits.
+running test a_cr_num_dec.txt
+
+checking output of test a_cr_num_dec.txt
+running test a_cr_num_zer.txt
+
+checking output of test a_cr_num_zer.txt
+running test a_cr_num_xst.txt
+
+checking output of test a_cr_num_xst.txt
+running test a_cr_nam_sml.txt
+
+checking output of test a_cr_nam_sml.txt
+running test a_cr_nam_big.txt
+
+checking output of test a_cr_nam_big.txt
+6d5
+< Error: Account names must be 1-15 characters.
+running test a_cr_nam_int.txt
+
+checking output of test a_cr_nam_int.txt
+running test a_cr_dep.txt
+
+checking output of test a_cr_dep.txt
+8,9d7
+< Error: Account does not exist.
+< Enter a valid command:
+running test a_cr_wtd.txt
+
+checking output of test a_cr_wtd.txt
+8d7
+< Error: Account does not exist.
+running test a_cr_tra.txt
+
+checking output of test a_cr_tra.txt
+8d7
+< Error: Account does not exist.
+running test r_dt.txt
+
+checking output of test r_dt.txt
+1,2c1,2
+< Enter 'login' to begin:
+< Are you 'retail' or 'agent'?
+---
+> Enter ‘login’ to begin:
+> Are you ‘retail’ or ‘agent’:
+4c4
+< Error: You do not have permission to do that.
+---
+> Error: You do not have permission to do that
+running test a_dl_xct.txt
+
+checking output of test a_dl_xct.txt
+running test a_dl_num_sml.txt
+
+checking output of test a_dl_num_sml.txt
+running test a_dl_num_big.txt
+
+checking output of test a_dl_num_big.txt
+running test a_dl_num_str.txt
+
+checking output of test a_dl_num_str.txt
+running test a_dl_num_neg.txt
+
+checking output of test a_dl_num_neg.txt
+5c5
+< Error: Account number must be greater than 0.
+---
+> Error: Account numbers must be 1-6 digits.
+running test a_dl_num_dec.txt
+
+checking output of test a_dl_num_dec.txt
+running test a_dl_num_zer.txt
+
+checking output of test a_dl_num_zer.txt
+5c5
+< Error: Account number must be greater than 0.
+---
+> Error: Account does not exist.
+running test a_dl_nam_sml.txt
+
+checking output of test a_dl_nam_sml.txt
+running test a_dl_nam_big.txt
+
+checking output of test a_dl_nam_big.txt
+running test a_dl_nam_int.txt
+
+checking output of test a_dl_nam_int.txt
+running test a_dl_dep.txt
+
+checking output of test a_dl_dep.txt
+10d9
+< Enter a valid command:
+running test a_dl_wtd.txt
+
+checking output of test a_dl_wtd.txt
+10d9
+< Enter a valid command:
+running test a_dl_tra.txt
+
+checking output of test a_dl_tra.txt
+running test r_dp_cor.txt
+
+checking output of test r_dp_cor.txt
+1,2c1
+< 01 000001 000000 00100000                
+< 00 000000 000000 00000000                
+\ No newline at end of file
+---
+> 01_000001_000001_00100000_               
+1,2c1,2
+< Enter 'login' to begin:
+< Are you 'retail' or 'agent'?
+---
+> Enter ‘login’ to begin:
+> Are you ‘retail’ or ‘agent’:
+5,6c5
+< Enter deposit amount:
+< Deposit Successful
+---
+> Enter an amount to be deposited:
+running test r_dp_oos.txt
+
+checking output of test r_dp_oos.txt
+running test r_dp_zer.txt
+
+checking output of test r_dp_zer.txt
+1d0
+< 01 000001 000000 00000000                
+1,2c1,2
+< Enter 'login' to begin:
+< Are you 'retail' or 'agent'?
+---
+> Enter ‘login’ to begin:
+> Are you ‘retail’ or ‘agent’:
+5,6c5,6
+< Enter deposit amount:
+< Deposit Successful
+---
+> Enter an amount to be deposited:
+> Error: Amount must be greater than 0.
+running test r_dp_neg.txt
+
+checking output of test r_dp_neg.txt
+1,2c1,2
+< Enter 'login' to begin:
+< Are you 'retail' or 'agent'?
+---
+> Enter ‘login’ to begin:
+> Are you ‘retail’ or ‘agent’:
+5,6c5,6
+< Enter deposit amount:
+< Error: Amount must be entered in cents and greater than 0.
+---
+> Enter an amount to be deposited:
+> Error: Amount must be greater than 0.
+running test r_dp_inv.txt
+
+checking output of test r_dp_inv.txt
+1,2c1,2
+< Enter 'login' to begin:
+< Are you 'retail' or 'agent'?
+---
+> Enter ‘login’ to begin:
+> Are you ‘retail’ or ‘agent’:
+running test r_dp_out.txt
+
+checking output of test r_dp_out.txt
+1,2c1,2
+< Enter 'login' to begin:
+< Are you 'retail' or 'agent'?
+---
+> Enter ‘login’ to begin:
+> Are you ‘retail’ or ‘agent’:
+5d4
+< Error: Account numbers must be 1-6 digits.
+running test r_dp_dec.txt
+
+checking output of test r_dp_dec.txt
+1,2c1,2
+< Enter 'login' to begin:
+< Are you 'retail' or 'agent'?
+---
+> Enter ‘login’ to begin:
+> Are you ‘retail’ or ‘agent’:
+5,6c5,6
+< Enter deposit amount:
+< Error: Amount must be entered in cents and greater than 0.
+---
+> Enter an amount to be deposited:
+> Error: Amount must not contain decimals.
+running test r_dp_str.txt
+
+checking output of test r_dp_str.txt
+1,2c1,2
+< Enter 'login' to begin:
+< Are you 'retail' or 'agent'?
+---
+> Enter ‘login’ to begin:
+> Are you ‘retail’ or ‘agent’:
+5,6c5,6
+< Enter deposit amount:
+< Error: Amount must be entered in cents and greater than 0.
+---
+> Enter an amount to be deposited:
+> Error: Amount must not contain non-numerical character.
+running test a_dp_dne.txt
+
+checking output of test a_dp_dne.txt
+running test a_dp_xct.txt
+
+checking output of test a_dp_xct.txt
+6d5
+< Deposit Successful
+running test a_dp_num_sml.txt
+
+checking output of test a_dp_num_sml.txt
+6d5
+< Deposit Successful
+running test a_dp_num_big.txt
+
+checking output of test a_dp_num_big.txt
+running test a_dp_num_str.txt
+
+checking output of test a_dp_num_str.txt
+running test a_dp_num_neg.txt
+
+checking output of test a_dp_num_neg.txt
+5c5
+< Error: Account number must be greater than 0.
+---
+> Error: Account numbers must be 1-6 digits.
+running test a_dp_num_dec.txt
+
+checking output of test a_dp_num_dec.txt
+running test a_dp_num_zer.txt
+
+checking output of test a_dp_num_zer.txt
+5c5
+< Error: Account number must be greater than 0.
+---
+> Error: Account does not exist.
+running test a_dp_amt_str.txt
+
+checking output of test a_dp_amt_str.txt
+running test a_dp_amt_dec.txt
+
+checking output of test a_dp_amt_dec.txt
+running test a_dp_amt_neg.txt
+
+checking output of test a_dp_amt_neg.txt
+running test a_dp_amt_zer.txt
+
+checking output of test a_dp_amt_zer.txt
+1d0
+< 01 000001 000000 00000000                
+6c6
+< Deposit Successful
+---
+> Error: Amount must be entered in cents and greater than 0.
+running test a_dp_amt_big.txt
+
+checking output of test a_dp_amt_big.txt
+running test a_dp_amt_sml.txt
+
+checking output of test a_dp_amt_sml.txt
+6d5
+< Deposit Successful
+running test r_wd_cor.txt
+
+checking output of test r_wd_cor.txt
+1,2c1
+< 02 000000 000001 00100000                
+< 00 000000 000000 00000000                
+\ No newline at end of file
+---
+> 02_000001_000002_00100000_               
+1,2c1,2
+< Enter 'login' to begin:
+< Are you 'retail' or 'agent'?
+---
+> Enter ‘login’ to begin:
+> Are you ‘retail’ or ‘agent’:
+6d5
+< Withdraw Successful
+running test r_wd_oos.txt
+
+checking output of test r_wd_oos.txt
+running test r_wd_zer.txt
+
+checking output of test r_wd_zer.txt
+1d0
+< 02 000000 000001 00000000                
+1,2c1,2
+< Enter 'login' to begin:
+< Are you 'retail' or 'agent'?
+---
+> Enter ‘login’ to begin:
+> Are you ‘retail’ or ‘agent’:
+6c6
+< Withdraw Successful
+---
+> Error: Amount must be greater than 0.
+running test r_wd_neg.txt
+
+checking output of test r_wd_neg.txt
+1,2c1,2
+< Enter 'login' to begin:
+< Are you 'retail' or 'agent'?
+---
+> Enter ‘login’ to begin:
+> Are you ‘retail’ or ‘agent’:
+6c6
+< Error: Amount must be entered in cents and greater than 0.
+---
+> Error: Amount must be greater than 0.
+running test r_wd_inv.txt
+
+checking output of test r_wd_inv.txt
+1,2c1,2
+< Enter 'login' to begin:
+< Are you 'retail' or 'agent'?
+---
+> Enter ‘login’ to begin:
+> Are you ‘retail’ or ‘agent’:
+running test r_wd_out.txt
+
+checking output of test r_wd_out.txt
+1,2c1,2
+< Enter 'login' to begin:
+< Are you 'retail' or 'agent'?
+---
+> Enter ‘login’ to begin:
+> Are you ‘retail’ or ‘agent’:
+5d4
+< Error: Account numbers must be 1-6 digits.
+running test r_wd_dec.txt
+
+checking output of test r_wd_dec.txt
+1,2c1,2
+< Enter 'login' to begin:
+< Are you 'retail' or 'agent'?
+---
+> Enter ‘login’ to begin:
+> Are you ‘retail’ or ‘agent’:
+5,6c5,6
+< Enter withdraw amount:
+< Error: Amount must be entered in cents and greater than 0.
+---
+> Enter an amount to be withdrawn:
+> Error: Amount must not contain decimals.
+7a8
+> 
+running test r_wd_str.txt
+
+checking output of test r_wd_str.txt
+1,2c1,2
+< Enter 'login' to begin:
+< Are you 'retail' or 'agent'?
+---
+> Enter ‘login’ to begin:
+> Are you ‘retail’ or ‘agent’:
+5,6c5,6
+< Enter deposit amount:
+< Error: Amount must be entered in cents and greater than 0.
+---
+> Enter an amount to be withdrawn:
+> Error: Amount must not contain non-numerical character.
+running test r_wd_lng.txt
+
+checking output of test r_wd_lng.txt
+1,2c1,2
+< Enter 'login' to begin:
+< Are you 'retail' or 'agent'?
+---
+> Enter ‘login’ to begin:
+> Are you ‘retail’ or ‘agent’:
+5,6d4
+< Error: Account does not exist.
+< Enter a valid command:
+running test r_wd_ovr.txt
+
+checking output of test r_wd_ovr.txt
+1,2c1,2
+< Enter 'login' to begin:
+< Are you 'retail' or 'agent'?
+---
+> Enter ‘login’ to begin:
+> Are you ‘retail’ or ‘agent’:
+5,6c5
+< Enter withdraw amount:
+< Withdraw Successful
+---
+> Enter an amount to be deposited:
+9,10c8,9
+< Enter withdraw amount:
+< Withdraw Successful
+---
+> Enter an amount to be deposited:
+> Error: You can not withdraw any more from this account today
+running test a_wd_dne.txt
+
+checking output of test a_wd_dne.txt
+running test a_wd_xct.txt
+
+checking output of test a_wd_xct.txt
+1c1
+< 02 000000 123456 99999999                
+---
+> 02 123456 000000 99999999                
+6d5
+< Withdraw Successful
+running test a_wd_num_sml.txt
+
+checking output of test a_wd_num_sml.txt
+1c1
+< 02 000000 000001 99999999                
+---
+> 02 000001 000000 99999999                
+6d5
+< Withdraw Successful
+running test a_wd_num_big.txt
+
+checking output of test a_wd_num_big.txt
+running test a_wd_num_str.txt
+
+checking output of test a_wd_num_str.txt
+running test a_wd_num_neg.txt
+
+checking output of test a_wd_num_neg.txt
+5c5
+< Error: Account number must be greater than 0.
+---
+> Error: Account numbers must be 1-6 digits.
+running test a_wd_num_dec.txt
+
+checking output of test a_wd_num_dec.txt
+running test a_wd_num_zer.txt
+
+checking output of test a_wd_num_zer.txt
+5c5
+< Error: Account number must be greater than 0.
+---
+> Error: Account does not exist.
+running test a_wd_amt_str.txt
+
+checking output of test a_wd_amt_str.txt
+running test a_wd_amt_dec.txt
+
+checking output of test a_wd_amt_dec.txt
+running test a_wd_amt_neg.txt
+
+checking output of test a_wd_amt_neg.txt
+running test a_wd_amt_zer.txt
+
+checking output of test a_wd_amt_zer.txt
+1d0
+< 02 000000 000001 00000000                
+6c6
+< Withdraw Successful
+---
+> Error: Amount must be entered in cents and greater than 0.
+running test a_wd_amt_big.txt
+
+checking output of test a_wd_amt_big.txt
+running test a_wd_amt_sml.txt
+
+checking output of test a_wd_amt_sml.txt
+1c1
+< 02 000000 000001 00000001                
+---
+> 02 000001 000000 00000001                
+6d5
+< Withdraw Successful
+running test r_tr_cor.txt
+
+checking output of test r_tr_cor.txt
+1,2c1
+< 03 000002 000001 00100000                
+< 00 000000 000000 00000000                
+\ No newline at end of file
+---
+> 03_000001_000002_00100000_               
+1,2c1,2
+< Enter 'login' to begin:
+< Are you 'retail' or 'agent'?
+---
+> Enter ‘login’ to begin:
+> Are you ‘retail’ or ‘agent’:
+6,7c6
+< Enter transfer amount:
+< Transfer Successful
+---
+> Enter a transfer amount:
+running test r_tr_oos.txt
+
+checking output of test r_tr_oos.txt
+running test r_tr_zer.txt
+
+checking output of test r_tr_zer.txt
+1d0
+< 03 000002 000001 00000000                
+1,2c1,2
+< Enter 'login' to begin:
+< Are you 'retail' or 'agent'?
+---
+> Enter ‘login’ to begin:
+> Are you ‘retail’ or ‘agent’:
+6,7c6,7
+< Enter transfer amount:
+< Transfer Successful
+---
+> Enter a transfer amount:
+> Error: Amount must be greater than 0.
+running test r_tr_neg.txt
+
+checking output of test r_tr_neg.txt
+1,2c1,2
+< Enter 'login' to begin:
+< Are you 'retail' or 'agent'?
+---
+> Enter ‘login’ to begin:
+> Are you ‘retail’ or ‘agent’:
+6,7c6,7
+< Enter transfer amount:
+< Error: Amount must be entered in cents and greater than 0.
+---
+> Enter a transfer amount:
+> Error: Amount must be greater than 0.
+running test r_tr_ivf.txt
+
+checking output of test r_tr_ivf.txt
+1,2c1,2
+< Enter 'login' to begin:
+< Are you 'retail' or 'agent'?
+---
+> Enter ‘login’ to begin:
+> Are you ‘retail’ or ‘agent’:
+running test r_tr_ivt.txt
+
+checking output of test r_tr_ivt.txt
+1,2c1,2
+< Enter 'login' to begin:
+< Are you 'retail' or 'agent'?
+---
+> Enter ‘login’ to begin:
+> Are you ‘retail’ or ‘agent’:
+running test r_tr_out.txt
+
+checking output of test r_tr_out.txt
+1,2c1,2
+< Enter 'login' to begin:
+< Are you 'retail' or 'agent'?
+---
+> Enter ‘login’ to begin:
+> Are you ‘retail’ or ‘agent’:
+5d4
+< Error: Account numbers must be 1-6 digits.
+running test r_tr_dec.txt
+
+checking output of test r_tr_dec.txt
+1,2c1,2
+< Enter 'login' to begin:
+< Are you 'retail' or 'agent'?
+---
+> Enter ‘login’ to begin:
+> Are you ‘retail’ or ‘agent’:
+6,7c6,7
+< Enter transfer amount:
+< Error: Amount must be entered in cents and greater than 0.
+---
+> Enter a transfer amount:
+> Error: Amount must not contain decimals.
+running test r_tr_str.txt
+
+checking output of test r_tr_str.txt
+1,2c1,2
+< Enter 'login' to begin:
+< Are you 'retail' or 'agent'?
+---
+> Enter ‘login’ to begin:
+> Are you ‘retail’ or ‘agent’:
+6,7c6,7
+< Enter transfer amount:
+< Error: Amount must be entered in cents and greater than 0.
+---
+> Enter a transfer amount:
+> Error: Amount must not contain non-numerical character.
+running test r_tr_lng.txt
+
+checking output of test r_tr_lng.txt
+1,2c1,2
+< Enter 'login' to begin:
+< Are you 'retail' or 'agent'?
+---
+> Enter ‘login’ to begin:
+> Are you ‘retail’ or ‘agent’:
+5,7d4
+< Error: Account does not exist.
+< Enter a valid command:
+< Enter a valid command:
+running test a_tr_num_dne.txt
+
+checking output of test a_tr_num_dne.txt
+running test a_tr_num_big.txt
+
+checking output of test a_tr_num_big.txt
+running test a_tr_num_str.txt
+
+checking output of test a_tr_num_str.txt
+running test a_tr_num_neg.txt
+
+checking output of test a_tr_num_neg.txt
+5c5
+< Error: Account number must be greater than 0.
+---
+> Error: Account numbers must be 1-6 digits.
+running test a_tr_num_dec.txt
+
+checking output of test a_tr_num_dec.txt
+running test a_tr_num_zer.txt
+
+checking output of test a_tr_num_zer.txt
+5c5
+< Error: Account number must be greater than 0.
+---
+> Error: Account does not exist.
+running test a_tr_num2_dne.txt
+
+checking output of test a_tr_num2_dne.txt
+running test a_tr_num2_big.txt
+
+checking output of test a_tr_num2_big.txt
+running test a_tr_num2_str.txt
+
+checking output of test a_tr_num2_str.txt
+running test a_tr_num2_neg.txt
+
+checking output of test a_tr_num2_neg.txt
+6c6
+< Error: Account number must be greater than 0.
+---
+> Error: Account numbers must be 1-6 digits.
+running test a_tr_num2_dec.txt
+
+checking output of test a_tr_num2_dec.txt
+running test a_tr_num2_zer.txt
+
+checking output of test a_tr_num2_zer.txt
+6c6
+< Error: Account number must be greater than 0.
+---
+> Error: Account does not exist.
+running test a_tr_sam.txt
+
+checking output of test a_tr_sam.txt
+6,7c6
+< Enter transfer amount:
+< Error: Amount must be entered in cents and greater than 0.
+---
+> Error: Cannot transfer to the same account.
+running test a_tr_xct.txt
+
+checking output of test a_tr_xct.txt
+1c1
+< 03 223456 123456 99999999                
+---
+> 03 123456 223456 99999999                
+7d6
+< Transfer Successful
+running test a_tr_num_sml.txt
+
+checking output of test a_tr_num_sml.txt
+1c1
+< 03 000002 000001 99999999                
+---
+> 03 000001 000002 99999999                
+7d6
+< Transfer Successful
+running test a_tr_amt_str.txt
+
+checking output of test a_tr_amt_str.txt
+running test a_tr_amt_dec.txt
+
+checking output of test a_tr_amt_dec.txt
+running test a_tr_amt_neg.txt
+
+checking output of test a_tr_amt_neg.txt
+running test a_tr_amt_zer.txt
+
+checking output of test a_tr_amt_zer.txt
+1d0
+< 03 000002 000001 00000000                
+7c7
+< Transfer Successful
+---
+> Error: Amount must be entered in cents and greater than 0.
+running test a_tr_amt_big.txt
+
+checking output of test a_tr_amt_big.txt
+running test a_tr_amt_sml.txt
+
+checking output of test a_tr_amt_sml.txt
+1c1
+< 03 000002 000001 00000001                
+---
+> 03 000001 000002 00000001                
+7d6
+< Transfer Successful
