@@ -1,7 +1,0 @@
-Enter ‘login’ to begin:
-Are you ‘retail’ or ‘agent’:
-Enter a valid command:
-Enter a valid account number:
-Enter withdraw amount:
-Error: Amount must be greater than 0.
-Enter a valid command:

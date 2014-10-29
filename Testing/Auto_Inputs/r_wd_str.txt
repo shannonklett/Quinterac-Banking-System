@@ -1,6 +1,6 @@
 login
 retail
-deposit
+withdraw
 000001
 $1
 logout
