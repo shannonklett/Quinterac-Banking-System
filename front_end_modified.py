@@ -40,6 +40,7 @@ agent = False
 running = True
 temp_transaction_summary = [] #list of 41 character strings
 account_list = [] #list of valid accounts numbers (in integer form)
+daily_total = 0
 
 '''
 READ/WRITE FILE FUNCTIONS
@@ -147,7 +148,7 @@ def check_amount(val):
 	elif not agent and int(val) > 100000:
 		print error_retail_amount  #transaction above $1,000.00 not accepted
 		return False
-	#no errors found, return True	
+	#no errors found, return True
 	return True
 
 '''
@@ -249,10 +250,19 @@ def withdraw():
 	#Passes the trasfer value is passed to a function which checks its validity
 	#Specifically checking if it is within the range allowable for Agent/Retail
 	if (check_amount(withdraw_val)):
-		#Returns a string in the format of
-		#CC_AAAAAA_BBBBBB_MMMMMMMM_NNNNNNNNNNNNNNN
-		#By calling make_transaction_string and passing appropriate parameters
-		return make_transaction_string(2, account2 = account_num, amount = withdraw_val)
+		#prevents going over a daily withdraw limit
+		if agent and daily_value+withdraw_val > 99999999:
+			print error_withdraw_over
+		elif not agent and daily_value+withdraw_val > 100000:
+			print error_withdraw_over
+		#limit not reached
+		else:
+			#keeps track of how much has been withdraw in this session
+			daily_value = daily_value + int(withdraw_val)
+			#Returns a string in the format of
+			#CC_AAAAAA_BBBBBB_MMMMMMMM_NNNNNNNNNNNNNNN
+			#By calling make_transaction_string and passing appropriate parameters
+			return make_transaction_string(2, account2 = account_num, amount = withdraw_val)
 	else:
 		return None
 	return None
