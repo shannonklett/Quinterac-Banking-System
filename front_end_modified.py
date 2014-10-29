@@ -99,14 +99,16 @@ def check_account_exists(num):
 #(bool) createMode: true if function called from create() method
 #Return Value: (bool) true if account number is acceptable
 def check_account_num(num, create_mode=False):
+	if len(num) > 6: 
+		print error_account_num #must be 1-6 digits
+		return False
 	try:
 		num = int(num)
 	except ValueError:
 		print error_account_num #must be 1-6 digits
 		return False	
-	if num>999999: 
-		print error_account_num #must be 1-6 digits
-	elif num<1:
+	
+	if num<1:
 		print error_account_neg #must be greater than 0
 	elif not create_mode and not check_account_exists(num):
 		#attempting to access account that doesn't exist
