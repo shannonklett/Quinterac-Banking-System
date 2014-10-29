@@ -1,0 +1,355 @@
+running test general_no_login.txt
+
+checking output of test general_no_login.txt
+running test general_double_login.txt
+
+checking output of test general_double_login.txt
+running test a_lo_cor.txt
+
+checking output of test a_lo_cor.txt
+running test general_login_while_logged_in.txt
+
+checking output of test general_login_while_logged_in.txt
+running test general_login_while_logged_in.txt
+
+checking output of test general_login_while_logged_in.txt
+running test r_cr.txt
+
+checking output of test r_cr.txt
+running test a_cr_num_xct.txt
+
+checking output of test a_cr_num_xct.txt
+running test a_cr_num_sml.txt
+
+checking output of test a_cr_num_sml.txt
+running test a_cr_num_big.txt
+
+checking output of test a_cr_num_big.txt
+running test a_cr_num_str.txt
+
+checking output of test a_cr_num_str.txt
+running test a_cr_num_neg.txt
+
+checking output of test a_cr_num_neg.txt
+running test a_cr_num_dec.txt
+
+checking output of test a_cr_num_dec.txt
+running test a_cr_num_zer.txt
+
+checking output of test a_cr_num_zer.txt
+running test a_cr_num_xst.txt
+
+checking output of test a_cr_num_xst.txt
+running test a_cr_nam_sml.txt
+
+checking output of test a_cr_nam_sml.txt
+running test a_cr_nam_big.txt
+
+checking output of test a_cr_nam_big.txt
+running test a_cr_nam_int.txt
+
+checking output of test a_cr_nam_int.txt
+running test a_cr_dep.txt
+
+checking output of test a_cr_dep.txt
+running test a_cr_wtd.txt
+
+checking output of test a_cr_wtd.txt
+running test a_cr_tra.txt
+
+checking output of test a_cr_tra.txt
+running test r_dt.txt
+
+checking output of test r_dt.txt
+running test a_dl_xct.txt
+
+checking output of test a_dl_xct.txt
+running test a_dl_num_sml.txt
+
+checking output of test a_dl_num_sml.txt
+running test a_dl_num_big.txt
+
+checking output of test a_dl_num_big.txt
+running test a_dl_num_str.txt
+
+checking output of test a_dl_num_str.txt
+running test a_dl_num_neg.txt
+
+checking output of test a_dl_num_neg.txt
+running test a_dl_num_dec.txt
+
+checking output of test a_dl_num_dec.txt
+running test a_dl_num_zer.txt
+
+checking output of test a_dl_num_zer.txt
+running test a_dl_nam_sml.txt
+
+checking output of test a_dl_nam_sml.txt
+running test a_dl_nam_big.txt
+
+checking output of test a_dl_nam_big.txt
+running test a_dl_nam_int.txt
+
+checking output of test a_dl_nam_int.txt
+running test a_dl_dep.txt
+
+checking output of test a_dl_dep.txt
+running test a_dl_wtd.txt
+
+checking output of test a_dl_wtd.txt
+running test a_dl_tra.txt
+
+checking output of test a_dl_tra.txt
+running test r_dp_cor.txt
+
+checking output of test r_dp_cor.txt
+running test r_dp_oos.txt
+
+checking output of test r_dp_oos.txt
+running test r_dp_zer.txt
+
+checking output of test r_dp_zer.txt
+running test r_dp_neg.txt
+
+checking output of test r_dp_neg.txt
+running test r_dp_inv.txt
+
+checking output of test r_dp_inv.txt
+running test r_dp_out.txt
+
+checking output of test r_dp_out.txt
+running test r_dp_dec.txt
+
+checking output of test r_dp_dec.txt
+running test r_dp_str.txt
+
+checking output of test r_dp_str.txt
+running test a_dp_dne.txt
+
+checking output of test a_dp_dne.txt
+running test a_dp_xct.txt
+
+checking output of test a_dp_xct.txt
+running test a_dp_num_sml.txt
+
+checking output of test a_dp_num_sml.txt
+running test a_dp_num_big.txt
+
+checking output of test a_dp_num_big.txt
+running test a_dp_num_str.txt
+
+checking output of test a_dp_num_str.txt
+running test a_dp_num_neg.txt
+
+checking output of test a_dp_num_neg.txt
+running test a_dp_num_dec.txt
+
+checking output of test a_dp_num_dec.txt
+running test a_dp_num_zer.txt
+
+checking output of test a_dp_num_zer.txt
+running test a_dp_amt_str.txt
+
+checking output of test a_dp_amt_str.txt
+running test a_dp_amt_dec.txt
+
+checking output of test a_dp_amt_dec.txt
+running test a_dp_amt_neg.txt
+
+checking output of test a_dp_amt_neg.txt
+running test a_dp_amt_zer.txt
+
+checking output of test a_dp_amt_zer.txt
+running test a_dp_amt_big.txt
+
+checking output of test a_dp_amt_big.txt
+running test a_dp_amt_sml.txt
+
+checking output of test a_dp_amt_sml.txt
+running test r_wd_cor.txt
+
+checking output of test r_wd_cor.txt
+5a6
+> Enter a valid command:
+running test r_wd_oos.txt
+
+checking output of test r_wd_oos.txt
+running test r_wd_zer.txt
+
+checking output of test r_wd_zer.txt
+running test r_wd_neg.txt
+
+checking output of test r_wd_neg.txt
+running test r_wd_inv.txt
+
+checking output of test r_wd_inv.txt
+running test r_wd_out.txt
+
+checking output of test r_wd_out.txt
+running test r_wd_dec.txt
+
+checking output of test r_wd_dec.txt
+running test r_wd_str.txt
+
+checking output of test r_wd_str.txt
+running test r_wd_lng.txt
+
+checking output of test r_wd_lng.txt
+5c5
+< Error: Account numbers must be 1-6 digits.
+---
+> Error: Account does not exist.
+running test r_wd_ovr.txt
+
+checking output of test r_wd_ovr.txt
+5a6,10
+> Enter a valid command:
+> Enter a valid account number:
+> Enter withdraw amount:
+> Error: You can not withdraw any more from this account today.
+> Enter a valid command:
+running test a_wd_dne.txt
+
+checking output of test a_wd_dne.txt
+running test a_wd_xct.txt
+
+checking output of test a_wd_xct.txt
+5a6
+> Enter a valid command:
+running test a_wd_num_sml.txt
+
+checking output of test a_wd_num_sml.txt
+5a6
+> Enter a valid command:
+running test a_wd_num_big.txt
+
+checking output of test a_wd_num_big.txt
+running test a_wd_num_str.txt
+
+checking output of test a_wd_num_str.txt
+running test a_wd_num_neg.txt
+
+checking output of test a_wd_num_neg.txt
+running test a_wd_num_dec.txt
+
+checking output of test a_wd_num_dec.txt
+running test a_wd_num_zer.txt
+
+checking output of test a_wd_num_zer.txt
+running test a_wd_amt_str.txt
+
+checking output of test a_wd_amt_str.txt
+running test a_wd_amt_dec.txt
+
+checking output of test a_wd_amt_dec.txt
+running test a_wd_amt_neg.txt
+
+checking output of test a_wd_amt_neg.txt
+running test a_wd_amt_zer.txt
+
+checking output of test a_wd_amt_zer.txt
+running test a_wd_amt_big.txt
+
+checking output of test a_wd_amt_big.txt
+running test a_wd_amt_sml.txt
+
+checking output of test a_wd_amt_sml.txt
+5a6
+> Enter a valid command:
+running test r_tr_cor.txt
+
+checking output of test r_tr_cor.txt
+running test r_tr_oos.txt
+
+checking output of test r_tr_oos.txt
+running test r_tr_zer.txt
+
+checking output of test r_tr_zer.txt
+running test r_tr_neg.txt
+
+checking output of test r_tr_neg.txt
+running test r_tr_ivf.txt
+
+checking output of test r_tr_ivf.txt
+running test r_tr_ivt.txt
+
+checking output of test r_tr_ivt.txt
+running test r_tr_out.txt
+
+checking output of test r_tr_out.txt
+running test r_tr_dec.txt
+
+checking output of test r_tr_dec.txt
+running test r_tr_str.txt
+
+checking output of test r_tr_str.txt
+running test r_tr_lng.txt
+
+checking output of test r_tr_lng.txt
+5c5
+< Error: Account numbers must be 1-6 digits.
+---
+> Error: Account does not exist.
+running test a_tr_num_dne.txt
+
+checking output of test a_tr_num_dne.txt
+running test a_tr_num_big.txt
+
+checking output of test a_tr_num_big.txt
+running test a_tr_num_str.txt
+
+checking output of test a_tr_num_str.txt
+running test a_tr_num_neg.txt
+
+checking output of test a_tr_num_neg.txt
+running test a_tr_num_dec.txt
+
+checking output of test a_tr_num_dec.txt
+running test a_tr_num_zer.txt
+
+checking output of test a_tr_num_zer.txt
+running test a_tr_num2_dne.txt
+
+checking output of test a_tr_num2_dne.txt
+running test a_tr_num2_big.txt
+
+checking output of test a_tr_num2_big.txt
+running test a_tr_num2_str.txt
+
+checking output of test a_tr_num2_str.txt
+running test a_tr_num2_neg.txt
+
+checking output of test a_tr_num2_neg.txt
+running test a_tr_num2_dec.txt
+
+checking output of test a_tr_num2_dec.txt
+running test a_tr_num2_zer.txt
+
+checking output of test a_tr_num2_zer.txt
+running test a_tr_sam.txt
+
+checking output of test a_tr_sam.txt
+running test a_tr_xct.txt
+
+checking output of test a_tr_xct.txt
+running test a_tr_num_sml.txt
+
+checking output of test a_tr_num_sml.txt
+running test a_tr_amt_str.txt
+
+checking output of test a_tr_amt_str.txt
+running test a_tr_amt_dec.txt
+
+checking output of test a_tr_amt_dec.txt
+running test a_tr_amt_neg.txt
+
+checking output of test a_tr_amt_neg.txt
+running test a_tr_amt_zer.txt
+
+checking output of test a_tr_amt_zer.txt
+running test a_tr_amt_big.txt
+
+checking output of test a_tr_amt_big.txt
+running test a_tr_amt_sml.txt
+
+checking output of test a_tr_amt_sml.txt
