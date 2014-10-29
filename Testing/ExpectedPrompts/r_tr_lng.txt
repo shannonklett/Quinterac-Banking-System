@@ -2,5 +2,5 @@ Enter 'login' to begin:
 Are you 'retail' or 'agent'?
 Enter a valid command:
 Enter a valid account number to transfer from:
-Error: Account does not exist.
+Error: Account numbers must be 1-6 digits.
 Enter a valid command:
