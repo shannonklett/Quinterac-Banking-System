@@ -5,4 +5,3 @@ Enter a valid account number:
 Enter withdraw amount:
 Error: Amount must be entered in cents and greater than 0.
 Enter a valid command:
-
