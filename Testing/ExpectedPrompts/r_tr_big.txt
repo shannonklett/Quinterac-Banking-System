@@ -3,6 +3,6 @@ Are you 'retail' or 'agent'?
 Enter a valid command:
 Enter a valid account number to transfer from:
 Enter a valid account number to transfer to:
-Enter a transfer amount:
+Enter transfer amount:
 Error: Transactions above $1,000.00 are not accepted in 'retail' mode.
 Enter a valid command:
