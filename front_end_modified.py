@@ -40,7 +40,7 @@ agent = False
 running = True
 temp_transaction_summary = [] #list of 41 character strings
 account_list = [] #list of valid accounts numbers (in integer form)
-daily_total = 0
+daily_value = 0
 
 '''
 READ/WRITE FILE FUNCTIONS
