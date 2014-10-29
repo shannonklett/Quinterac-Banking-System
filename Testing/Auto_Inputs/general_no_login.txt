@@ -3,4 +3,6 @@ delete
 deposit
 withdraw
 transfer
+login
+retail
 logout

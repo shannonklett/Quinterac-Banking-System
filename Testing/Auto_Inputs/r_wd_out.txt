@@ -2,3 +2,4 @@ login
 retail
 withdraw
 logout
+logout

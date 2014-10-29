@@ -2,3 +2,4 @@ login
 retail
 deposit
 logout
+logout
