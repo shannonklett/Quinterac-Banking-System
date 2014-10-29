@@ -1,8 +1,0 @@
-Enter 'login' to begin:
-Are you 'retail' or 'agent'?
-Enter a valid command:
-Enter a valid account number to transfer from:
-Enter a valid account number to transfer to:
-Enter transfer amount:
-Transfer Successful
-Enter a valid command:

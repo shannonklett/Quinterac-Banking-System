@@ -1,5 +1,6 @@
 Enter 'login' to begin:
 Are you 'retail' or 'agent'?
 Enter a valid command:
-Error: You do not have permission to do that.
+Enter a valid account number to transfer from:
+Error: Account does not exist.
 Enter a valid command:
