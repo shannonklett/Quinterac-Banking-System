@@ -253,9 +253,9 @@ def withdraw():
 	#Specifically checking if it is within the range allowable for Agent/Retail
 	if (check_amount(withdraw_val)):
 		#prevents going over a daily withdraw limit
-		if agent and daily_value+withdraw_val > 99999999:
+		if agent and (daily_value+int(withdraw_val)) > 99999999:
 			print error_withdraw_over
-		elif not agent and daily_value+withdraw_val > 100000:
+		elif not agent and (daily_value+int(withdraw_val)) > 100000:
 			print error_withdraw_over
 		#limit not reached
 		else:
