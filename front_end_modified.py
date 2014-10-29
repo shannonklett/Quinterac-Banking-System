@@ -30,6 +30,7 @@ error_permission = "Error: You do not have permission to do that."
 error_account_exists = "Error: Account already exists."
 error_account_neg = "Error: Account number must be greater than 0."
 error_transfer_same ="Error: Cannot transfer to the same account."
+error_withdraw_over="Error: You can not withdraw any more from this account today."
 
 '''
 GLOBAL VARIABLES

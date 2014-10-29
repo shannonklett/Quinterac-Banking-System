@@ -2,9 +2,9 @@ Enter ‘login’ to begin:
 Are you ‘retail’ or ‘agent’:
 Enter a valid command:
 Enter a valid account number:
-Enter an amount to be deposited:
+Enter withdraw amount:
 Enter a valid command:
 Enter a valid account number:
-Enter an amount to be deposited:
-Error: You can not withdraw any more from this account today
+Enter withdraw amount:
+Error: You can not withdraw any more from this account today.
 Enter a valid command:
