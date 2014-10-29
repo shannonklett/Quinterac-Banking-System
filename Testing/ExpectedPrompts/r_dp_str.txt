@@ -1,7 +1,7 @@
-Enter ‘login’ to begin:
-Are you ‘retail’ or ‘agent’:
+Enter 'login' to begin:
+Are you 'retail' or 'agent':
 Enter a valid command:
 Enter a valid account number:
-Enter an amount to be deposited:
-Error: Amount must not contain non-numerical character.
+Enter deposit amount:
+Error: Amount must be entered in cents and greater than 0.
 Enter a valid command:
