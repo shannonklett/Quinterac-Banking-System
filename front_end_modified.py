@@ -40,7 +40,8 @@ agent = False
 running = True
 temp_transaction_summary = [] #list of 41 character strings
 account_list = [] #list of valid accounts numbers (in integer form)
-daily_total = 0
+global daily_value
+daily_value = 0
 
 '''
 READ/WRITE FILE FUNCTIONS
@@ -239,7 +240,8 @@ def deposit():
 #followed by a value to be withdrawn from the requested account.
 #Parameters: None
 #Return Value: (String) formatted 41 character transaction string
-def withdraw():	
+def withdraw():
+	global daily_value
 	#Requests the user to input a valid account number to withdraw from
 	print prompt_valid_account_num
 	account_num = raw_input()
@@ -253,9 +255,11 @@ def withdraw():
 	#Specifically checking if it is within the range allowable for Agent/Retail
 	if (check_amount(withdraw_val)):
 		#prevents going over a daily withdraw limit
-		if agent and (daily_value+int(withdraw_val)) > 99999999:
+		agent_max = 99999999 - daily_value
+		retail_max = 100000 - daily_value
+		if agent and int(withdraw_val) > agent_max:
 			print error_withdraw_over
-		elif not agent and (daily_value+int(withdraw_val)) > 100000:
+		elif not agent and int(withdraw_val) > retail_max:
 			print error_withdraw_over
 		#limit not reached
 		else:
