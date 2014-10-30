@@ -410,6 +410,8 @@ while (running):
 		#Logout is an additional input accepted.
 		#If the user uses this input, than the logged_in loop is broken.
 		elif(command_input == 'logout'):
+			#reset the withdraw_limits for the next day
+			withdraw_limits = []
 			#write to the Transaction Summary File
 			write_transaction_file(temp_transaction_summary, output_file)
 			logged_in = False
