@@ -40,8 +40,7 @@ agent = False
 running = True
 temp_transaction_summary = [] #list of 41 character strings
 account_list = [] #list of valid accounts numbers (in integer form)
-global daily_value
-daily_value = 0
+withdraw_limits = [] #list of accounts that have been withdrawn from, and amounts per session
 
 '''
 READ/WRITE FILE FUNCTIONS
@@ -255,20 +254,25 @@ def withdraw():
 	#Specifically checking if it is within the range allowable for Agent/Retail
 	if (check_amount(withdraw_val)):
 		#prevents going over a daily withdraw limit
-		agent_max = 99999999 - daily_value
-		retail_max = 100000 - daily_value
-		if agent and int(withdraw_val) > agent_max:
-			print error_withdraw_over
-		elif not agent and int(withdraw_val) > retail_max:
-			print error_withdraw_over
-		#limit not reached
-		else:
-			#keeps track of how much has been withdraw in this session
-			daily_value = daily_value + int(withdraw_val)
-			#Returns a string in the format of
-			#CC_AAAAAA_BBBBBB_MMMMMMMM_NNNNNNNNNNNNNNN
-			#By calling make_transaction_string and passing appropriate parameters
+		i = -1
+		for j in range (len(withdraw_limits)):
+			if (withdraw_limits[j][0] == account_num):
+				i = j
+				break
+		if i == -1:
+			withdraw_limits.append((account_num,withdraw_val))
 			return make_transaction_string(2, account2 = account_num, amount = withdraw_val)
+		else:
+			if not agent and int(withdraw_val) > (100000-int(withdraw_limits[i][1])):
+				print error_withdraw_over
+			#limit not reached
+			else:
+				#keeps track of how much has been withdraw in this session
+				withdraw_limits[i] = (withdraw_limits[i][0],(int(withdraw_limits[i][1])+int(withdraw_val)))
+				#Returns a string in the format of
+				#CC_AAAAAA_BBBBBB_MMMMMMMM_NNNNNNNNNNNNNNN
+				#By calling make_transaction_string and passing appropriate parameters
+				return make_transaction_string(2, account2 = account_num, amount = withdraw_val)
 	else:
 		return None
 	return None
